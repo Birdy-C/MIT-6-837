@@ -110,6 +110,16 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="ifs.cpp" />
+    <ClCompile Include="image.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="matrix.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="ifs.h" />
+    <ClInclude Include="image.h" />
+    <ClInclude Include="matrix.h" />
+    <ClInclude Include="vectors.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
