@@ -1,0 +1,36 @@
+
+PerspectiveCamera {
+    center    3.505950 2.546939 5.234728
+    direction -0.425035 -0.514595 -0.744673
+    up        0.000000 1.000000 0.000000
+    angle 50
+}
+
+Lights {
+    numLights 1
+    DirectionalLight {
+        direction -0.2 -1 -0.5
+        color 0.9 0.9 0.9 
+    }
+}
+
+Background {
+    color 0.2 0 0.6
+    ambientLight 0.1 0.1 0.1 
+}
+
+Materials {
+    numMaterials 1
+    PhongMaterial {	
+        diffuseColor 1 0 0 
+    }
+}
+
+Group {
+    numObjects 1
+
+    MaterialIndex 0
+    TriangleMesh {
+        obj_file patch_high.obj
+    }
+}

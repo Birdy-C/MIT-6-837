@@ -1,0 +1,45 @@
+num_systems 3
+
+system
+hose_generator {
+  position -5 5 0
+  velocity  1 0 0
+  velocity_randomness 0.5
+  color 1 0 1
+  mass 5
+}
+euler_integrator {
+}
+constant_forcefield {
+  force 0 -9.8 0
+}
+
+system
+hose_generator {
+  position -5 5.1 0
+  velocity  5 0 0
+  velocity_randomness 0.5
+  color 1 1 0
+  mass 1
+}
+euler_integrator {
+}
+constant_forcefield {
+  force 0 -9.8 0
+}
+
+system
+hose_generator {
+  position -5 5.2 0
+  velocity  5 0 0
+  velocity_randomness 0.5
+  color 0 1 1
+  mass 5
+}
+euler_integrator {
+}
+constant_forcefield {
+  force 0 -9.8 0
+}
+
+

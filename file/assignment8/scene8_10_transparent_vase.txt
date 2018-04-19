@@ -1,0 +1,68 @@
+
+PerspectiveCamera {
+    center    0.0 6.412207 9.038475
+    direction 0.0 -0.568903 -0.822364
+    up        0.000000 1.000000 0.000000
+    angle 50
+}
+
+Lights {
+    numLights 2
+    PointLight {
+        position 10 20 6
+        color 0.6 0.6 0.6 
+	attenuation 0 0.03 0
+    }
+    PointLight {
+        position  -10 20 6
+        color 0.3 0.3 0.3
+	attenuation 0 0.03 0
+     }
+}
+
+Background {
+    color 0.2 0 0.6
+    ambientLight 0.1 0.1 0.1 
+}
+
+Materials {
+    numMaterials 4
+    PhongMaterial {	
+        diffuseColor 0.1 0.1 0.1
+	specularColor 0.8 0.8 0.8
+	exponent 128
+	transparentColor 0.7 0.7 0.7
+	reflectiveColor 0.3 0.3 0.3
+	indexOfRefraction 1.25
+    }
+    PhongMaterial {	
+        diffuseColor 1 1 1
+    }
+    PhongMaterial {	
+        diffuseColor 1 0 0 
+    }
+    Checkerboard {
+         Transform {
+	     YRotate 30
+	     UniformScale 0.5
+         }
+         materialIndex 1
+         materialIndex 2
+    }
+
+}
+
+Group {
+    numObjects 2
+
+    MaterialIndex 0
+    TriangleMesh {
+        obj_file vase_very_high.obj
+    }
+
+    MaterialIndex 3
+    Plane {
+        normal 0 1 0
+	offset -4.0001
+    }
+}

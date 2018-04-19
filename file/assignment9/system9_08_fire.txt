@@ -1,0 +1,18 @@
+num_systems 1
+
+system
+ring_generator {
+  velocity 0 5 0
+  position_randomness 1
+  velocity_randomness 0.5
+  color 1 1 0
+  dead_color 0.8 0 0
+  lifespan 1
+}
+euler_integrator {
+}
+constant_forcefield {
+  force 0 -5 0
+}
+
+

@@ -1,0 +1,54 @@
+
+PerspectiveCamera {
+    center    -0.841950 0.943160 2.014966
+    direction 0.338670 -0.392536 -0.855113
+    up 0 1 0
+    angle 50
+}
+
+Lights {
+    numLights 1
+    DirectionalLight {
+        direction 0 -1 0
+        color 0.9 0.9 0.9
+    }
+}
+
+Materials {
+    numMaterials 3
+    PhongMaterial {
+        diffuseColor 1 0 0 
+    }
+    PhongMaterial {
+        diffuseColor 0 0 1
+    }
+    Checkerboard {
+        Transform {
+	    UniformScale 10
+        }
+        materialIndex 0
+        materialIndex 1
+    }
+}
+
+Background {
+    color 0 1 0
+    ambientLight 0.2 0.2 0.2
+}
+
+Group {
+    numObjects 2
+
+    MaterialIndex 2
+    Triangle {
+        vertex0 500    0.01  0.99
+        vertex1 500    0.01  -500
+        vertex2 -0.99  0.01  0.99
+    }
+    Triangle {
+        vertex0 -0.99  0.01  0.99
+        vertex1 500    0.01  -500
+        vertex2 -0.99  0.01  -500
+    }
+}
+

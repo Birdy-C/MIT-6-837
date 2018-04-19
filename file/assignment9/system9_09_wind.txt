@@ -1,0 +1,21 @@
+num_systems 1
+
+system
+hose_generator {
+  position 0 -5 0
+  position_randomness 0.2
+  velocity  0 2 0
+  velocity_randomness 0.5
+  color 0.5 1 0.5
+  dead_color 0 0 1
+  mass 2
+  mass_randomness 0.1
+  lifespan 4
+  lifespan_randomness 2
+  desired_num_particles 1000
+}
+euler_integrator {
+}
+wind_forcefield {
+  magnitude 20
+}

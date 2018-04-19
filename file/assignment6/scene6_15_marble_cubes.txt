@@ -1,0 +1,148 @@
+
+OrthographicCamera {
+    center 0 0 10
+    direction 0 0 -1
+    up 0 1 0
+    size 6.5
+}
+
+Lights {
+    numLights 1
+    DirectionalLight {
+        direction -0.1 -0.3 -1
+        color 0.9 0.9 0.9 
+    }
+}
+
+Background {
+    color 0.7 0.7 0.7
+    ambientLight 0.1 0.1 0.1 
+}
+
+Materials {
+    numMaterials 12
+
+    PhongMaterial {
+        diffuseColor 0.3 0.3 0.3
+    }
+    PhongMaterial {
+        diffuseColor 0.9 0.9 0.9
+    }
+    Noise {
+        Transform {
+            UniformScale 2
+	    YRotate 20
+	    XRotate -20
+	    Translate 1.5 -1.5 0
+        }
+        materialIndex 0
+        materialIndex 1
+	octaves 1
+    }
+
+
+    PhongMaterial {
+        diffuseColor 0.5 0.2 0.1
+    }
+    PhongMaterial {
+        diffuseColor 1 0.8 0.8
+    }
+    Noise {
+        Transform {
+            UniformScale 2
+	    YRotate 20
+	    XRotate -20
+	    Translate -1.5 -1.5 0
+        }
+        materialIndex 3
+        materialIndex 4
+	octaves 5
+    }
+
+
+    PhongMaterial {
+        diffuseColor 0.1 0.5 0.2
+    }
+    PhongMaterial {
+        diffuseColor 0.8 1 0.8
+    }
+    Marble {
+        Transform {
+            UniformScale 2
+	    YRotate 20
+	    XRotate -20
+	    Translate 1.5 1.5 0
+        }
+        materialIndex 6
+        materialIndex 7
+	octaves 0
+	frequency 3
+	amplitude 3
+    }
+
+
+    PhongMaterial {
+        diffuseColor 0.2 0.1 0.5
+    }
+    PhongMaterial {
+        diffuseColor 0.8 0.8 1
+    }
+    Marble {
+        Transform {
+            UniformScale 2
+	    YRotate 20
+	    XRotate -20
+	    Translate -1.5 1.5 0
+        }
+        materialIndex 9
+        materialIndex 10
+	octaves 5
+	frequency 3
+	amplitude 2
+    }
+}
+
+
+Group {
+    numObjects 4
+
+    MaterialIndex 2
+    Transform {
+        Translate -1.5 1.5 0
+	XRotate 20
+	YRotate -20
+	TriangleMesh {
+            obj_file cube.obj
+        }
+    }
+
+    MaterialIndex 5
+    Transform {
+        Translate 1.5 1.5 0
+	XRotate 20
+	YRotate -20
+	TriangleMesh {
+            obj_file cube.obj
+        }
+    }
+
+    MaterialIndex 8
+    Transform {
+        Translate -1.5 -1.5 0
+	XRotate 20
+	YRotate -20
+	TriangleMesh {
+            obj_file cube.obj
+        }
+    }
+
+    MaterialIndex 11
+    Transform {
+        Translate 1.5 -1.5 0
+	XRotate 20
+	YRotate -20
+	TriangleMesh {
+            obj_file cube.obj
+        }
+    }
+}

@@ -1,0 +1,97 @@
+
+PerspectiveCamera {
+    center    0.227053 5.7 11.642794
+    direction 0.000000 -0.25 -0.5
+    up        0.000000 1.000000 0.000000
+    angle 32
+}
+
+Lights {
+    numLights 2
+    DirectionalLight {
+        direction -0.4 -1 -0.5
+        color 0.6 0.6 0.6
+    }
+    DirectionalLight {
+        direction 0.4 -1 -0.5
+        color 0.3 0.3 0.3 
+    }
+}
+
+Background {
+    color 0.2 0 0.6
+    ambientLight 0.1 0.1 0.1 
+}
+
+Materials {
+    numMaterials 8
+    PhongMaterial {	
+        diffuseColor 0.1 0.1 0.1
+	specularColor 1 1 1 
+	exponent 64
+	reflectiveColor 0.9 0.9 0.9
+	transparentColor 0 0 0
+    }
+    PhongMaterial {
+        diffuseColor 0.6 0.49 0.3
+    }
+    PhongMaterial {
+        diffuseColor 0.79 0.66 0.44
+	reflectiveColor 0.3 0.3 0.3
+    }
+    Wood {
+        Transform {
+	    Translate 0 -0.2 0
+	    XRotate 90
+            UniformScale 4
+        }
+        materialIndex 1
+        materialIndex 2
+	octaves 3
+	frequency 6
+	amplitude 2
+    }
+
+    PhongMaterial {
+        diffuseColor 0.4 0.33 0.22
+    }
+    PhongMaterial {
+        diffuseColor 0.69 0.56 0.34
+	reflectiveColor 0.3 0.3 0.3
+    }
+    Wood {
+        Transform {
+	    Translate 0 -0.2 0
+	    ZRotate 90
+            UniformScale 4
+        }
+        materialIndex 4
+        materialIndex 5
+	octaves 3
+	frequency 6
+	amplitude 2
+    }
+
+    Checkerboard {
+        Transform {
+	    UniformScale 0.5
+	}
+	materialIndex 3
+	materialIndex 6
+    }
+}
+
+Group {
+    numObjects 2
+
+    MaterialIndex 0
+    TriangleMesh {
+        obj_file teapot_high.obj
+    }
+
+    MaterialIndex 7
+    Plane {
+        normal 0 1 0
+	offset -0.0001
+    }
+}

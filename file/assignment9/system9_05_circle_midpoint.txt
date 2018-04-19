@@ -1,0 +1,14 @@
+num_systems 1
+
+system
+hose_generator {
+  position 1 0 0
+  velocity  0 5 0
+  mass 1
+  lifespan 10
+}
+midpoint_integrator {
+}
+radial_forcefield {
+  magnitude 25
+}
