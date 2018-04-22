@@ -1,46 +1,65 @@
+// @author Birdy 2018/4/22
 #define _CRT_SECURE_NO_WARNINGS
 
 #include <iostream>
 #include <cassert>
+//#include "ifs.h"
+#include "scene_parser.h"
+#include "image.h"
+#include "matrix.h"
+#include "camera.h" 
+#include "material.h"
+#include "object3d.h"
+#include "group.h" 
+#include "sphere.h"
 
-#include "ifs.h"
+Vec3f setcolor(int depth_min, int depth_max, float depth)
+{
+	float t = ((float)depth_max - depth) / (depth_max - depth_min);
+	return Vec3f(t, t, t);
+}
+
 
 int main(int argc, char *argv[])
 {
 	// ========================================================
 	// ========================================================
 	// Some sample code you might like to use for parsing 
-	// command line arguments and the input IFS files
-
-	// sample command line:
-	// ifs -input fern.txt -points 10000 -iters 10 -size 100 -output fern.tga
+	// command line arguments 
 
 	char *input_file = NULL;
-	int num_points = 10000;
-	int num_iters = 10;
-	int size = 100;
+	int width = 100;
+	int height = 100;
 	char *output_file = NULL;
+	float depth_min = 0;
+	float depth_max = 1;
+	char *depth_file = NULL;
+
+	// sample command line:
+	// raytracer -input scene1_1.txt -size 200 200 -output output1_1.tga -depth 9 10 depth1_1.tga
 
 	for (int i = 1; i < argc; i++) {
 		if (!strcmp(argv[i], "-input")) {
 			i++; assert(i < argc);
 			input_file = argv[i];
 		}
-		else if (!strcmp(argv[i], "-points")) {
-			i++; assert(i < argc);
-			num_points = atoi(argv[i]);
-		}
-		else if (!strcmp(argv[i], "-iters")) {
-			i++; assert(i < argc);
-			num_iters = atoi(argv[i]);
-		}
 		else if (!strcmp(argv[i], "-size")) {
 			i++; assert(i < argc);
-			size = atoi(argv[i]);
+			width = atoi(argv[i]);
+			i++; assert(i < argc);
+			height = atoi(argv[i]);
 		}
 		else if (!strcmp(argv[i], "-output")) {
 			i++; assert(i < argc);
 			output_file = argv[i];
+		}
+		else if (!strcmp(argv[i], "-depth")) {
+			i++; assert(i < argc);
+			depth_min = atof(argv[i]);
+			i++; assert(i < argc);
+			depth_max = atof(argv[i]);
+			i++; assert(i < argc);
+			depth_file = argv[i];
 		}
 		else {
 			printf("whoops error with command line argument %d: '%s'\n", i, argv[i]);
@@ -50,16 +69,34 @@ int main(int argc, char *argv[])
 
 	// ========================================================
 	// ========================================================
-	// Some sample code you might like to use for
-	// parsing the IFS transformation files
+	SceneParser mainapp(input_file);
+	Image img(width, height);
+	Image depthimg(width, height);
 
-	Image img(size, size);
 	//Ĭ�ϰ׵׺�ͼ
-	img.SetAllPixels(Vec3f(255, 255, 255));
-	IFS mainIFS(input_file);
+	img.SetAllPixels(mainapp.getBackgroundColor());
+	depthimg.SetAllPixels(Vec3f(0, 0, 0));
+	Group *itemAll = mainapp.getGroup();
+	Camera *cameraAll = mainapp.getCamera();
+	//IFS mainIFS(input_file);
+	for (int i = 0; i < width; i++)
+	{
+		for (int j = 0; j < height; j++)
+		{
+			Vec2f point((float)i / width, (float)j / height);
+			//Vec2f point(0.5,0.5);
+			Ray rayTemp = cameraAll->generateRay(point);
+			Hit result;
+			if (itemAll->intersect(rayTemp, result, cameraAll->getTMin()))
+			{
+				assert(NULL != result.getMaterial());
+				img.SetPixel(height - j - 1, width - i - 1, (result.getMaterial())->getDiffuseColor());
+				depthimg.SetPixel(height - j - 1, width - i - 1, setcolor(depth_min, depth_max, result.getT()));
 
-	mainIFS.render(img, num_points, num_iters);
+			}
+		}
+	}
 	img.SaveTGA(output_file);
-	// ========================================================
-	// ========================================================
+	depthimg.SaveTGA(depth_file);
+	return 0;
 }

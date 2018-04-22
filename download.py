@@ -10,7 +10,7 @@ def getHtml(url):
     return html  
 
 def getFile(uri, html, assignment):  
-    r=r'href=\"(.*.txt|.*.h|.*.C)\" tppabs='
+    r=r'href = \"(.*.txt|.*.h|.*.C)\" tppabs='
     fileRE = re.compile(r)  
     fileList = re.findall(fileRE,html)  
     # filename=1  
@@ -26,8 +26,12 @@ def getFile(uri, html, assignment):
         #filename+=1  
 
 
-# url=raw_input("please input the source url:")  
-for i in range(10):
-    url = "http://10.76.1.181/courses/training/mitF04/assignments/assignment"+ str(i) +"/index.htm"
-    html=getHtml(url)
-    getFile(url,html,str(i))  
+## url=raw_input("please input the source url:")  
+##for i in range(10):
+#    url = "http://10.76.1.181/courses/training/mitF04/assignments/assignment"+ str(i) +"/index.htm"
+#    html=getHtml(url)
+#    getFile(url,html,str(i))  
+url = "http://10.76.1.181/courses/training/mitF04/assignments/assignment3/index.htm"
+html=getHtml(url)
+#print html
+getFile(url,html,str(3))  

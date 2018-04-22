@@ -1,0 +1,26 @@
+
+OrthographicCamera {
+    center 0 0 10 
+    direction 0 0 -1  
+    up 0 1 0
+    size 5
+}
+
+Background { color 0 0 0 }
+
+Materials {
+    numMaterials 1
+    PhongMaterial {
+        diffuseColor 1 0 0
+    }
+}
+
+Group {
+    numObjects 1
+    MaterialIndex 0
+    Sphere {
+	center 0 0 0 
+        radius 1 
+    }
+}
+
