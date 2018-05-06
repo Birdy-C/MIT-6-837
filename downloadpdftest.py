@@ -13,13 +13,8 @@ def getHtml(url):
 def getPDF(url,file_name):
     print url
     print file_name
-    try:
-		u = urllib.urlopen(url)
-		print "Successful"
-    except:
-		print "Unsuccessful"
+    u = urllib.urlopen(url)
     f = open(file_name, 'wb')
-
     block_sz = 8192
     while True:
         buffer = u.read(block_sz)
@@ -30,18 +25,5 @@ def getPDF(url,file_name):
     print ("Sucessful to download" + " " + file_name)
 
 
-def getFile(url, html):  
-    r=r'a href=\"(.*.pdf)\" tppabs='
-    fileRE = re.compile(r)  
-    fileList = re.findall(fileRE,html)  
-    # filename=1  
-    print fileList
-    for fileURL in fileList:   		
-		getPDF("http://10.76.1.181/courses/training/mitF04/" + fileURL,fileURL)
 
-
-
-url = "http://10.76.1.181/courses/training/mitF04/calendar.html"
-html=getHtml(url)
-print html
-getFile(url,html)  
+getPDF("http://10.76.1.181/courses/training/mitF04/calelectures/00_Intro.pdf","lectures/00_Intro.pdf")
