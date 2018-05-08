@@ -1,0 +1,101 @@
+OrthographicCamera {
+    center 0 0 5
+    direction 0 0 -1  
+    up 0 1 0
+    size 5.5
+}
+
+Lights {
+    numLights 1
+    DirectionalLight {
+        direction -0.5 -0.5 -1
+        color 0.5 0.5 0.5 
+    }
+}
+
+Background {
+    color 0 0 0
+    ambientLight 0.5 0.5 0.5 
+}
+
+Materials {
+    numMaterials 6
+    Material { 
+        diffuseColor 1 0 0 
+    }
+    Material { 
+        diffuseColor 0 1 0 
+    }
+    Material { 
+        diffuseColor 0 0 1 
+    }
+    Material { 
+        diffuseColor 0 1 1 
+    }
+    Material { 
+        diffuseColor 1 0 1 
+    }
+    Material { 
+        diffuseColor 1 1 0 
+    }
+}
+
+Group {
+    numObjects 6
+
+    MaterialIndex 3
+    Transform {
+        Translate  -1.25 -1.25 -2
+        Scale  5 5 5
+        Sphere {
+            center 0 0 0
+            radius 0.25 
+        }
+    }
+
+    MaterialIndex 0
+    Transform {
+        Translate -1.5 1.5 0
+        Scale  2 2 2
+        Sphere {
+            center 0 0 0
+            radius 0.5
+        }
+    }
+
+    MaterialIndex 1
+    Sphere {
+        center 0 0 0
+        radius 1
+    }
+
+    MaterialIndex 2
+    Transform {
+        Translate  1.5 -1.5 0
+        Scale  0.5 0.5 0.5
+        Sphere {
+            center 0 0 0
+            radius 2
+        }
+    }
+
+    MaterialIndex 4
+    Transform {
+        Translate  1.25 1.25 -2
+        Scale  5 5 5
+        Sphere {
+            center 0 0 0
+            radius 0.25 
+        }
+    }
+
+    MaterialIndex 5
+    Transform {
+        Translate  0 0 1.6 
+        Scale  0.5 0.5 0.5 
+        Sphere {
+            center 0 0 0 
+            radius 1
+        }
+    }    
+}

@@ -24,9 +24,6 @@
     <ClCompile Include="matrix.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="ifs.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="sphere.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
@@ -40,6 +37,21 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="object3d.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="light.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="plane.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="triangle.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="transform.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="vectors.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
@@ -62,9 +74,6 @@
     <ClInclude Include="image.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="ifs.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="matrix.h">
       <Filter>头文件</Filter>
     </ClInclude>
@@ -78,6 +87,18 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="camera.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="light.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="plane.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="triangle.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="transform.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

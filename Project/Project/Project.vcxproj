@@ -112,26 +112,33 @@
   <ItemGroup>
     <ClCompile Include="camera.cpp" />
     <ClCompile Include="group.cpp" />
-    <ClCompile Include="ifs.cpp" />
     <ClCompile Include="image.cpp" />
+    <ClCompile Include="light.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="matrix.cpp" />
     <ClCompile Include="object3d.cpp" />
+    <ClCompile Include="plane.cpp" />
     <ClCompile Include="scene_parser.cpp" />
     <ClCompile Include="sphere.cpp" />
+    <ClCompile Include="transform.cpp" />
+    <ClCompile Include="triangle.cpp" />
+    <ClCompile Include="vectors.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="camera.h" />
     <ClInclude Include="group.h" />
     <ClInclude Include="hit.h" />
-    <ClInclude Include="ifs.h" />
     <ClInclude Include="image.h" />
+    <ClInclude Include="light.h" />
     <ClInclude Include="material.h" />
     <ClInclude Include="matrix.h" />
     <ClInclude Include="object3d.h" />
+    <ClInclude Include="plane.h" />
     <ClInclude Include="ray.h" />
     <ClInclude Include="scene_parser.h" />
     <ClInclude Include="sphere.h" />
+    <ClInclude Include="transform.h" />
+    <ClInclude Include="triangle.h" />
     <ClInclude Include="vectors.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

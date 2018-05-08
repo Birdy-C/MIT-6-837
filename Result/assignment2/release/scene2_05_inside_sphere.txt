@@ -1,0 +1,53 @@
+
+PerspectiveCamera {
+    center 0 0 10
+    direction 0 0 -1  
+    up 0 1 0
+    angle 45
+}
+
+Lights {
+    numLights 1
+    DirectionalLight {
+        direction -0.5 -0.5 -1
+        color 0.8 0.8 0.8 
+    }
+}
+
+Background { 
+    color 0 0 0 
+    ambientLight 0.2 0.2 0.2 
+}
+
+Materials {
+    numMaterials 3
+    Material {
+        diffuseColor 1 0 0
+    }
+    Material {
+        diffuseColor 0 1 0
+    }
+    Material {
+        diffuseColor 0 0 1
+    }
+}
+
+Group {
+    numObjects 3
+    MaterialIndex 0
+    Sphere {
+	center 0 0 5
+        radius 6
+    }
+    MaterialIndex 1
+    Sphere {
+	center 0 0 0
+        radius 1
+    }
+    MaterialIndex 2
+    Sphere {
+	center 0 0 15
+        radius 1
+    }
+}
+
