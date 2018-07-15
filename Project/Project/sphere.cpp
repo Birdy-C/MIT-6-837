@@ -48,3 +48,7 @@ bool Sphere::intersect(const Ray & tr, Hit & h, float tmin)
 	}
 	return false;
 }
+
+void Sphere::paint(void)
+{
+}

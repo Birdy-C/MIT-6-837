@@ -1,5 +1,6 @@
 #include "plane.h"
 
+const int INF = 100000;
 
 Plane::Plane(Vec3f & tnormal, float td, Material * m)
 	:normal(tnormal), d(td)
@@ -23,4 +24,15 @@ bool Plane::intersect(const Ray & r, Hit & h, float tmin)
 		return true;
 	}
 	return false;
+}
+
+void Plane::paint(void)
+{
+	//glBegin(GL_QUADS);
+	//glNormal3f(normal.x(), normal.y(), normal.z());
+	//glVertex3f(x0, y0, z0);
+	//glVertex3f(x1, y1, z1);
+	//glVertex3f(x2, y2, z2);
+	//glVertex3f(x3, y3, z3);
+	//glEnd();
 }

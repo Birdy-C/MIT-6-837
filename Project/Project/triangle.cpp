@@ -60,3 +60,13 @@ bool Triangle::intersect(const Ray & r, Hit & h, float tmin)
 
 	return false;
 }
+
+void Triangle::paint(void)
+{
+	glBegin(GL_TRIANGLES);
+	glNormal3f(normal.x(), normal.y(), normal.z());
+	glVertex3f(a.x(), a.y(), a.z());
+	glVertex3f(b.x(), b.y(), b.z());
+	glVertex3f(c.x(), c.y(), c.z());
+	glEnd();
+}

@@ -14,6 +14,7 @@
 #include "group.h" 
 #include "sphere.h"
 #include "light.h"
+#include "glCanvas.h"
 
 Vec3f setcolor(int depth_min, int depth_max, float depth)
 {
@@ -21,6 +22,71 @@ Vec3f setcolor(int depth_min, int depth_max, float depth)
 	return Vec3f(t, t, t);
 }
 
+char *input_file = NULL;
+int width = 100;
+int height = 100;
+char *output_file = NULL;
+float depth_min = 0;
+float depth_max = 1;
+char *depth_file = NULL;
+char *normal_file = NULL;
+bool shade_back = false;
+bool gui = false;
+SceneParser *mainapp;
+GLCanvas canvas;
+
+
+
+void render(void)
+{
+	Image img(width, height);
+	Image depthimg(width, height);
+	Image normalimg(width, height);
+	//canvas.initialize(&mainapp,);// TODO add init
+	//Ĭ�ϰ׵׺�ͼ
+	img.SetAllPixels(mainapp->getBackgroundColor());
+	depthimg.SetAllPixels(Vec3f(0, 0, 0));
+	Group *itemAll = mainapp->getGroup();
+	Camera *cameraAll = mainapp->getCamera();
+	//IFS mainIFS(input_file);
+	for (int i = 0; i < width; i++)
+	{
+		for (int j = 0; j < height; j++)
+		{
+			Vec2f point((float)i / width, (float)j / height);
+			//Vec2f point(0.5,0.5);
+			Ray rayTemp = cameraAll->generateRay(point);
+			Hit result;
+			if (itemAll->intersect(rayTemp, result, cameraAll->getTMin()))
+			{
+				assert(NULL != result.getMaterial());
+				Vec3f LightAll = mainapp->getAmbientLight(); // add Ambient Light Out the material
+
+				for (int lighti = 0; lighti < mainapp->getNumLights(); lighti++)
+				{
+					Light *light = mainapp->getLight(lighti);
+					Vec3f p, dir, col;
+					float distance;
+					light->getIllumination(p, dir, col, distance);
+					if (shade_back)
+						LightAll += abs(dir.Dot3(result.getNormal()))*col;
+					else
+						LightAll += max(dir.Dot3(result.getNormal()), (float)0)*col;
+				}
+				img.SetPixel(height - j - 1, width - i - 1, (result.getMaterial())->getDiffuseColor()*LightAll);
+				depthimg.SetPixel(height - j - 1, width - i - 1, setcolor(depth_min, depth_max, result.getT()));
+				normalimg.SetPixel(height - j - 1, width - i - 1, Vec3f(abs(result.getNormal().x()), abs(result.getNormal().y()), abs(result.getNormal().z())));
+			}
+		}
+	}
+	if (output_file)
+		img.SaveTGA(output_file);
+	if (depth_file)
+		depthimg.SaveTGA(depth_file);
+	if (normal_file)
+		normalimg.SaveTGA(normal_file);
+
+}
 
 int main(int argc, char *argv[])
 {
@@ -29,15 +95,6 @@ int main(int argc, char *argv[])
 	// Some sample code you might like to use for parsing 
 	// command line arguments 
 
-	char *input_file = NULL;
-	int width = 100;
-	int height = 100;
-	char *output_file = NULL;
-	float depth_min = 0;
-	float depth_max = 1;
-	char *depth_file = NULL;
-	char *normal_file = NULL;
-	bool shade_back = false;
 	// sample command line:
 	// raytracer -input scene1_1.txt -size 200 200 -output output1_1.tga -depth 9 10 depth1_1.tga
 
@@ -71,60 +128,25 @@ int main(int argc, char *argv[])
 		else if (!strcmp(argv[i], "-shade_back")) {
 			shade_back = true;
 		}
+		else if (!strcmp(argv[i], "-gui")) {
+			gui = true;
+		}
 		else {
 			printf("whoops error with command line argument %d: '%s'\n", i, argv[i]);
 			assert(0);
 		}
 	}
-
-	// ========================================================
-	// ========================================================
-	SceneParser mainapp(input_file);
-	Image img(width, height);
-	Image depthimg(width, height);
-	Image normalimg(width, height);
-
-	//Ĭ�ϰ׵׺�ͼ
-	img.SetAllPixels(mainapp.getBackgroundColor());
-	depthimg.SetAllPixels(Vec3f(0, 0, 0));
-	Group *itemAll = mainapp.getGroup();
-	Camera *cameraAll = mainapp.getCamera();
-	//IFS mainIFS(input_file);
-	for (int i = 0; i < width; i++)
+	FILE * file = fopen("scene3_01_cube_orthographic.txt", "r");
+	//fprintf(stderr, "%s \n", GetLastError());
+	if (gui)
 	{
-		for (int j = 0; j < height; j++)
-		{
-			Vec2f point((float)i / width, (float)j / height);
-			//Vec2f point(0.5,0.5);
-			Ray rayTemp = cameraAll->generateRay(point);
-			Hit result;
-			if (itemAll->intersect(rayTemp, result, cameraAll->getTMin()))
-			{
-				assert(NULL != result.getMaterial());
-				Vec3f LightAll = mainapp.getAmbientLight();
-
-				for (int lighti = 0;  lighti < mainapp.getNumLights(); lighti++)
-				{
-					Light *light = mainapp.getLight(lighti);
-					Vec3f p, dir, col;
-					light->getIllumination(p, dir, col);
-					if(shade_back)
-						LightAll += abs(dir.Dot3(result.getNormal()))*col;
-					else
-						LightAll += max(dir.Dot3(result.getNormal()), (float)0)*col;
-				}
-				img.SetPixel(height - j - 1, width - i - 1, (result.getMaterial())->getDiffuseColor()*LightAll);
-				depthimg.SetPixel(height - j - 1, width - i - 1, setcolor(depth_min, depth_max, result.getT()));
-				normalimg.SetPixel(height - j - 1, width - i - 1, Vec3f(abs(result.getNormal().x()), abs(result.getNormal().y()), abs(result.getNormal().z())));
-			}
-		}
+		mainapp = new SceneParser(input_file);
+		canvas.initialize(mainapp, render);
+		delete mainapp;
 	}
-	if(output_file)
-		img.SaveTGA(output_file);
-	if(depth_file)
-		depthimg.SaveTGA(depth_file);
-	if (normal_file)
-		normalimg.SaveTGA(normal_file);
-
+	else
+	{
+		render();
+	}
 	return 0;
 }

@@ -54,6 +54,12 @@
     <ClCompile Include="vectors.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="glCanvas.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="material.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="hit.h">
@@ -99,6 +105,9 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="transform.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="glCanvas.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

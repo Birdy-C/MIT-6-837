@@ -35,3 +35,7 @@ bool Transform::intersect(const Ray & r, Hit & h, float tmin)
 
 	return false;
 }
+
+void Transform::paint(void)
+{
+}

@@ -1,6 +1,2 @@
-﻿  camera.cpp
-e:\2017春夏\mit-6-837\project\project\camera.cpp(35): warning C4244: “参数”: 从“double”转换到“float”，可能丢失数据
-e:\2017春夏\mit-6-837\project\project\camera.cpp(66): warning C4244: “初始化”: 从“double”转换到“float”，可能丢失数据
-e:\2017春夏\mit-6-837\project\project\camera.cpp(68): warning C4244: “参数”: 从“double”转换到“float”，可能丢失数据
-  Project.vcxproj -> E:\2017春夏\MIT-6-837\Project\Debug\Project.exe
-  Project.vcxproj -> E:\2017春夏\MIT-6-837\Project\Debug\Project.pdb (Partial PDB)
+﻿  main.cpp
+e:\2017春夏\mit-6-837\project\project\main.cpp(140): error C3861: “GetLastError”: 找不到标识符

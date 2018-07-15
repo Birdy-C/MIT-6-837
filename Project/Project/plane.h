@@ -10,5 +10,6 @@ public:
 	Plane(Vec3f &normal, float d, Material *m); 
 	~Plane();
 	virtual bool intersect(const Ray &r, Hit &h, float tmin);
+	void paint(void);
 };
 

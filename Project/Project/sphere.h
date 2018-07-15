@@ -9,6 +9,7 @@ public:
 	Sphere(Vec3f c, float r, Material* m);
 	~Sphere();
 	virtual bool intersect(const Ray &r, Hit &h, float tmin);
+	void paint(void);
 
 };
 

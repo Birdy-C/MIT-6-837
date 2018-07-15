@@ -13,6 +13,6 @@ public:
 
 	void addObject(int index, Object3D *obj);
 	virtual bool intersect(const Ray &r, Hit &h, float tmin);
-
+	void paint(void);
 };
 

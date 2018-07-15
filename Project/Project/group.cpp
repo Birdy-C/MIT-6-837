@@ -30,3 +30,11 @@ bool Group::intersect(const Ray & r, Hit & h, float tmin)
 	}
 	return flag;
 }
+
+void Group::paint(void)
+{
+	for (int i = 0; i < all; i++)
+	{
+		objList[i]->paint();
+	}
+}
