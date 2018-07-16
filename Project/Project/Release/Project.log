@@ -1,11 +1,7 @@
-﻿  camera.cpp
-camera.cpp(35): warning C4244: “参数”: 从“double”转换到“float”，可能丢失数据
-camera.cpp(66): warning C4244: “初始化”: 从“double”转换到“float”，可能丢失数据
-camera.cpp(68): warning C4244: “参数”: 从“double”转换到“float”，可能丢失数据
-  正在生成代码
-  1 of 184 functions ( 0.5%) were compiled, the rest were copied from previous compilation.
+﻿  正在生成代码
+  0 of 232 functions ( 0.0%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
-    2 functions had inline decision re-evaluated but remain unchanged
+    0 functions had inline decision re-evaluated but remain unchanged
   已完成代码的生成
   Project.vcxproj -> E:\2017春夏\MIT-6-837\Project\Release\Project.exe
   Project.vcxproj -> E:\2017春夏\MIT-6-837\Project\Release\Project.pdb (Full PDB)
