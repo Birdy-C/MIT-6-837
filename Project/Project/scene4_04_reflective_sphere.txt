@@ -1,0 +1,70 @@
+
+PerspectiveCamera {
+    center 0 0.5 5
+    direction 0 -0.1 -1
+    up 0 1 0
+    angle 30
+}
+
+Lights {
+    numLights 1
+    DirectionalLight {
+        direction 0.5 -1 0 
+        color 0.8 0.8 0.8
+    }
+}
+
+Materials {
+    numMaterials 3
+    PhongMaterial {
+        diffuseColor 0.1 0.1 0.1
+	specularColor 1 1 1
+	exponent 50
+	transparentColor 0 0 0	
+	reflectiveColor 0.9 0.9 0.9
+	indexOfRefraction 1
+    }
+
+    PhongMaterial {
+        diffuseColor 1 0.1 0.1
+	specularColor 1 1 1
+	exponent 50
+	transparentColor 0 0 0	
+	reflectiveColor 0.9 0.1 0.1
+	indexOfRefraction 1
+    }
+
+    PhongMaterial {
+        diffuseColor 1 1 1
+    }
+}
+
+Background {
+    color 0.2 0.1 0.6
+    ambientLight 0.2 0.2 0.2
+}
+
+Group {
+    numObjects 3
+
+    MaterialIndex 0
+    Sphere {
+	center 0.3 0.0 -1
+        radius 1.0
+    }
+
+    MaterialIndex 1
+    Sphere {
+	center -0.5 -0.6 0.2
+        radius 0.4
+    }
+
+    MaterialIndex 2
+    Plane {
+	normal 0 1 0
+        offset -1
+    }
+
+
+}
+

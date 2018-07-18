@@ -1,0 +1,77 @@
+PerspectiveCamera {
+    center 0 20 20
+    direction 0 -0.9 -1
+    up 0 1 0
+    angle 30
+}
+
+Lights {
+    numLights 2
+    PointLight {
+        position 0 5 0 
+	color 0.7 0.7 0.7
+	attenuation 1 0 0
+    }
+    DirectionalLight {
+        direction -0.1 -1 -0.1
+	color 0.1 0.1 0.1
+    }
+}
+
+Background {
+    color 0 0 0 
+    ambientLight 0.2 0.2 0.2 
+}
+
+Materials {
+    numMaterials 4
+
+    PhongMaterial {
+        diffuseColor 1 1 1
+    }
+
+    PhongMaterial {
+        diffuseColor 1 0 0 
+    }
+
+    PhongMaterial {
+        diffuseColor 0 1 0 
+    }
+
+    PhongMaterial {
+        diffuseColor 0 0 1 
+    }
+}
+
+Group {
+    numObjects 3
+
+    MaterialIndex 0
+    Plane {
+        normal 0 1 0 
+	offset 0
+    }
+
+    MaterialIndex 1
+    Transform {
+        Translate  0 2 0 
+	YRotate  45 
+	Scale  4 0.5 1 
+        TriangleMesh {
+       	    obj_file cube.obj
+	}
+    }
+
+    MaterialIndex 2
+    Transform {
+        Translate  0 8 0 
+	YRotate  -45 
+	Scale  4 0.5 1 
+        TriangleMesh {
+       	    obj_file cube.obj
+	}
+    }
+
+}
+
+

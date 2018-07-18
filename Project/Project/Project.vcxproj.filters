@@ -60,6 +60,12 @@
     <ClCompile Include="material.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="raytracer.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="rayTree.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="hit.h">
@@ -111,6 +117,12 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="info.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="raytracer.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="rayTree.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

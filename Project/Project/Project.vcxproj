@@ -127,6 +127,8 @@
     <ClCompile Include="matrix.cpp" />
     <ClCompile Include="object3d.cpp" />
     <ClCompile Include="plane.cpp" />
+    <ClCompile Include="raytracer.cpp" />
+    <ClCompile Include="rayTree.cpp" />
     <ClCompile Include="scene_parser.cpp" />
     <ClCompile Include="sphere.cpp" />
     <ClCompile Include="transform.cpp" />
@@ -146,6 +148,8 @@
     <ClInclude Include="object3d.h" />
     <ClInclude Include="plane.h" />
     <ClInclude Include="ray.h" />
+    <ClInclude Include="raytracer.h" />
+    <ClInclude Include="rayTree.h" />
     <ClInclude Include="scene_parser.h" />
     <ClInclude Include="sphere.h" />
     <ClInclude Include="transform.h" />
