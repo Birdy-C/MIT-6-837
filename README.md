@@ -2,6 +2,7 @@
 
 课程要求：https://groups.csail.mit.edu/graphics/classes/6.837/F04/calendar.html
 
+---
 
 - [**Result**](Result)
   各次assignment对应的source code和exe     
@@ -13,13 +14,10 @@
   课程pdf（未完成）
 
 - [**other**](other)
-
-
   - gl头文件
-  - 爬虫文件，download.py文件:爬取网站的.c,.txt,.h文件  
+  - 爬虫文件，download.py文件:爬取网站的.c,.txt,.h文件，这个不太会写正则表达式 = = 有缘优化……
 
-
-
+---
 
 
   然后其他的一些资料整理见  

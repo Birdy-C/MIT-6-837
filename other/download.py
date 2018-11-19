@@ -10,28 +10,20 @@ def getHtml(url):
     return html  
 
 def getFile(uri, html, assignment):  
-    r=r'href = \"(.*.txt|.*.h|.*.C)\" tppabs='
+    r=r'href\s{0,1}=\s{0,1}\"(.*.txt|.*.h|.*.C)\"' # in assignments 1&2 there is a space around =
     fileRE = re.compile(r)  
     fileList = re.findall(fileRE,html)  
-    # filename=1  
     for fileURL in fileList:  
-        #print url[:-9] + fileURL
         directory = "file/assignment"+ assignment
         if not os.path.exists(directory):
             os.makedirs(directory)
-        urllib.urlretrieve(url[:-9] + fileURL, directory + "/" + fileURL)  
-
-        #print 'file "%s" done' %fileURL 
+        urllib.urlretrieve(url + "/" + fileURL, directory + "/" + fileURL)  
         print "assignment"+ assignment +" - "+ fileURL
-        #filename+=1  
 
 
-## url=raw_input("please input the source url:")  
-##for i in range(10):
-#    url = "http://10.76.1.181/courses/training/mitF04/assignments/assignment"+ str(i) +"/index.htm"
-#    html=getHtml(url)
-#    getFile(url,html,str(i))  
-url = "http://10.76.1.181/courses/training/mitF04/assignments/assignment3/index.htm"
-html=getHtml(url)
-#print html
-getFile(url,html,str(3))  
+for i in range(10):
+# for i in [1,2]:
+    url = "https://groups.csail.mit.edu/graphics/classes/6.837/F04/assignments/assignment"+ str(i) 
+    html=getHtml(url)
+    #print html
+    getFile(url,html,str(i))  
