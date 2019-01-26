@@ -6,9 +6,15 @@ float det3x3(float a1, float a2, float a3,
 	float b1, float b2, float b3,
 	float c1, float c2, float c3);
 
+void Triangle::calculatebox()
+{
+	boundingbox = new BoundingBox(a,b,c);
+}
+
 Triangle::Triangle(Vec3f & ta, Vec3f & tb, Vec3f & tc, Material * m)
 	:a(ta), b(tb), c(tc)
 {
+	calculatebox();
 	itsMaterial = m;
 	Vec3f::Cross3(normal, tb - ta, tc - tb);
 	normal.Normalize();
@@ -16,6 +22,7 @@ Triangle::Triangle(Vec3f & ta, Vec3f & tb, Vec3f & tc, Material * m)
 
 Triangle::~Triangle()
 {
+
 }
 
 bool Triangle::intersect(const Ray & r, Hit & h, float tmin)

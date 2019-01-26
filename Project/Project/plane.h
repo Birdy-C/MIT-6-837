@@ -7,7 +7,7 @@ class Plane :
 	// H(P) = nP - d =0
 	Vec3f normal;
 	float d;
-
+	void calculatebox();
 public:
 	Plane(Vec3f &normal, float d, Material *m); 
 	~Plane();

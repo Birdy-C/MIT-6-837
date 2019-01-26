@@ -19,6 +19,11 @@ void(*GLCanvas::traceRayFunction)(float, float);
 // A pointer to the global SceneParser
 SceneParser *GLCanvas::scene;
 
+// A pointer to the grid
+Grid *GLCanvas::grid;
+bool GLCanvas::visualize_grid = 0;
+int GLCanvas::visualize_grid_march = 0;
+
 // State of the mouse cursor
 int GLCanvas::mouseButton;
 int GLCanvas::mouseX;
@@ -117,39 +122,56 @@ void GLCanvas::display(void)
 		scene->getLight(i)->glInit(i);
 	}
 
+	if (visualize_grid) {
+		if (visualize_grid_march == 0) {
+			grid->paint();
+			grid->getBoundingBox()->paint();
+		}
+		else if (visualize_grid_march == 1) {
+			RayTree::paintHitCells();
+			grid->getBoundingBox()->paint();
+		}
+		else {
+			RayTree::paintEnteredFaces();
+			grid->getBoundingBox()->paint();
+		}
+	}
+	else {
+
 #if !SPECULAR_FIX
 
-	// DEFAULT: single pass rendering
-	// Draw the scene once
-	SPECULAR_FIX_WHICH_PASS = 0;
-	scene->getGroup()->paint();
+		// DEFAULT: single pass rendering
+		// Draw the scene once
+		SPECULAR_FIX_WHICH_PASS = 0;
+		scene->getGroup()->paint();
 
 #else
 
-	// OPTIONAL: 3 pass rendering to fix the specular highlight 
-	// artifact for small specular exponents (wide specular lobe)
+		// OPTIONAL: 3 pass rendering to fix the specular highlight 
+		// artifact for small specular exponents (wide specular lobe)
 
-	// First pass, draw the specular highlights
-	SPECULAR_FIX_WHICH_PASS = 0;
-	scene->getGroup()->paint();
+		// First pass, draw the specular highlights
+		SPECULAR_FIX_WHICH_PASS = 0;
+		scene->getGroup()->paint();
 
-	glDepthFunc(GL_EQUAL);
-	glEnable(GL_BLEND);
+		glDepthFunc(GL_EQUAL);
+		glEnable(GL_BLEND);
 
-	// Second pass, multiply specular highlights by normal dot light
-	SPECULAR_FIX_WHICH_PASS = 1;
-	glBlendFunc(GL_DST_COLOR, GL_ZERO);
-	scene->getGroup()->paint();
+		// Second pass, multiply specular highlights by normal dot light
+		SPECULAR_FIX_WHICH_PASS = 1;
+		glBlendFunc(GL_DST_COLOR, GL_ZERO);
+		scene->getGroup()->paint();
 
-	// Third pass, add diffuse & ambient components
-	SPECULAR_FIX_WHICH_PASS = 2;
-	glBlendFunc(GL_ONE, GL_ONE);
-	scene->getGroup()->paint();
+		// Third pass, add diffuse & ambient components
+		SPECULAR_FIX_WHICH_PASS = 2;
+		glBlendFunc(GL_ONE, GL_ONE);
+		scene->getGroup()->paint();
 
-	glDepthFunc(GL_LESS);
-	glDisable(GL_BLEND);
+		glDepthFunc(GL_LESS);
+		glDisable(GL_BLEND);
 
 #endif
+	}
 
 	// Draw the ray tree
 	glDisable(GL_LIGHTING);
@@ -248,6 +270,12 @@ void GLCanvas::keyboard(unsigned char key, int i, int j) {
 		// redraw
 		display();
 		break; }
+	case 'g':  case 'G': {
+		// toggle ray-grid march visualization
+		visualize_grid_march = (visualize_grid_march + 1) % 3;
+		// redraw
+		display();
+		break; }
 	case 'q':  case 'Q':
 		exit(0);
 		break;
@@ -263,16 +291,19 @@ void GLCanvas::keyboard(unsigned char key, int i, int j) {
 // by calling 'exit(0)'
 // ========================================================
 
-void GLCanvas::initialize(SceneParser *_scene, void(*_renderFunction)(void), void(*_traceRayFunction)(float, float)) {
+void GLCanvas::initialize(SceneParser *_scene,
+	void(*_renderFunction)(void),
+	void(*_traceRayFunction)(float, float),
+	Grid *_grid, bool _visualize_grid) {
 	scene = _scene;
+	grid = _grid;
+	visualize_grid = _visualize_grid;
 	renderFunction = _renderFunction;
 	traceRayFunction = _traceRayFunction;
 
 	// Set global lighting parameters
 	glEnable(GL_LIGHTING);
 	glShadeModel(GL_SMOOTH);
-	glLightModeli(GL_LIGHT_MODEL_TWO_SIDE, GL_TRUE);
-
 
 	// Set window parameters
 	glutInitDisplayMode(GLUT_DOUBLE | GLUT_DEPTH | GLUT_RGB);
@@ -291,6 +322,10 @@ void GLCanvas::initialize(SceneParser *_scene, void(*_renderFunction)(void), voi
 	GLfloat ambArr[] = { ambColor.x(), ambColor.y(), ambColor.z(), 1.0 };
 	glLightModelfv(GL_LIGHT_MODEL_AMBIENT, ambArr);
 
+	glLightModeli(GL_LIGHT_MODEL_TWO_SIDE, GL_TRUE);
+	glCullFace(GL_BACK);
+	glDisable(GL_CULL_FACE);
+
 	// Initialize callback functions
 	glutMouseFunc(mouse);
 	glutMotionFunc(motion);
@@ -304,4 +339,3 @@ void GLCanvas::initialize(SceneParser *_scene, void(*_renderFunction)(void), voi
 
 // ========================================================
 // ========================================================
-

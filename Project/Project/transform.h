@@ -6,6 +6,7 @@ class Transform :
 {
 	Matrix mat;
 	Object3D *obj;
+	void calculatebox();
 public:
 	Transform(Matrix &m, Object3D *o);
 	~Transform();

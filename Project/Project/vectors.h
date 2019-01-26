@@ -137,6 +137,11 @@ public:
     data[0] = V.data[0];
     data[1] = V.data[1];
     data[2] = V.data[2]; }
+  Vec3f(float d0) {
+	  data[0] = d0;
+	  data[1] = d0;
+	  data[2] = d0;
+  }
   Vec3f(float d0, float d1, float d2) {
     data[0] = d0;
     data[1] = d1;

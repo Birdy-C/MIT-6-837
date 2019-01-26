@@ -1,0 +1,64 @@
+
+OrthographicCamera {
+    center 5 5 20 
+    direction -5 -5 -20
+    up 0 1 0
+    size 10
+}
+
+Lights {
+    numLights 1
+    DirectionalLight {
+        direction -0.5 -0.3 -1
+        color 0.7 0.7 0.7 
+    }
+}
+
+Background {
+    color 0.2 0 0.6
+    ambientLight 0.3 0.3 0.3 
+}
+
+Materials {
+    numMaterials 3
+    Material { diffuseColor 1 1 1 }
+    Material { diffuseColor 1 0 0 }
+    Material { diffuseColor 0 1 0 }
+}
+
+Group {
+    numObjects 4
+
+    MaterialIndex 0
+    Triangle {
+        vertex0 -4 -4 -2
+	vertex1  4  4 -2
+	vertex2 -4  4 -2
+    }
+    Triangle {
+        vertex0 -4 -4 -2
+	vertex1  4 -4 -2
+	vertex2  4  4 -2
+    }
+ 
+    MaterialIndex 1	
+    Transform {
+        ZRotate 0
+	Triangle {
+            vertex0 -2 -2 0
+	    vertex1 2 1 0
+	    vertex2 1 2 0
+        }
+    }
+
+    MaterialIndex 2	
+    Transform {
+        ZRotate 45
+	Triangle {
+            vertex0 -2 -2 2
+	    vertex1 2 1 2
+	    vertex2 1 2 2
+        }
+    }
+}
+

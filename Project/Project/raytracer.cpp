@@ -45,7 +45,7 @@ bool transmittedDirection(const Vec3f &normal, const Vec3f &incoming,
 
 }
 
-RayTracer::RayTracer()
+RayTracer::RayTracer():grid(NULL)
 {
 }
 

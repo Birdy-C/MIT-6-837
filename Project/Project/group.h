@@ -7,6 +7,8 @@ class Group :
 
 	Object3D **objList;
 	int all;
+	void calculatebox();
+
 public:
 	Group(int n);
 	~Group();
@@ -14,5 +16,6 @@ public:
 	void addObject(int index, Object3D *obj);
 	virtual bool intersect(const Ray &r, Hit &h, float tmin);
 	void paint(void);
+	void insertIntoGrid(Grid * g, Matrix * m);
 };
 

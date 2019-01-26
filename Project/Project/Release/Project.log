@@ -1,8 +1,2 @@
-﻿  raytracer.cpp
-  正在生成代码
-  3 of 285 functions ( 1.1%) were compiled, the rest were copied from previous compilation.
-    0 functions were new in current compilation
-    1 functions had inline decision re-evaluated but remain unchanged
-  已完成代码的生成
-  Project.vcxproj -> E:\2017春夏\MIT-6-837\Project\Release\Project.exe
-  Project.vcxproj -> E:\2017春夏\MIT-6-837\Project\Release\Project.pdb (Full PDB)
+﻿  group.cpp
+LINK : fatal error LNK1181: 无法打开输入文件“glut32.lib”

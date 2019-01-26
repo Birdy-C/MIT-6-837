@@ -2,12 +2,18 @@
 
 const int INF = 100000;
 
+void Plane::calculatebox()
+{
+	boundingbox = NULL;
+}
+
 Plane::Plane(Vec3f & tnormal, float td, Material * m)
 	:normal(tnormal), d(td)
 {
+	calculatebox();
 	itsMaterial = m;
 	normal.Normalize();
-
+	boundingbox = NULL;
 }
 
 

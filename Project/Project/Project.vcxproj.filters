@@ -13,6 +13,9 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="object3D">
+      <UniqueIdentifier>{1a782d73-ec11-4742-8e64-91e5421303b3}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -24,31 +27,13 @@
     <ClCompile Include="matrix.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="sphere.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="group.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="camera.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="scene_parser.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="object3d.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="light.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="plane.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="triangle.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="transform.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="vectors.cpp">
@@ -65,6 +50,30 @@
     </ClCompile>
     <ClCompile Include="rayTree.cpp">
       <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="boundingbox.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="group.cpp">
+      <Filter>object3D</Filter>
+    </ClCompile>
+    <ClCompile Include="plane.cpp">
+      <Filter>object3D</Filter>
+    </ClCompile>
+    <ClCompile Include="sphere.cpp">
+      <Filter>object3D</Filter>
+    </ClCompile>
+    <ClCompile Include="triangle.cpp">
+      <Filter>object3D</Filter>
+    </ClCompile>
+    <ClCompile Include="object3d.cpp">
+      <Filter>object3D</Filter>
+    </ClCompile>
+    <ClCompile Include="transform.cpp">
+      <Filter>object3D</Filter>
+    </ClCompile>
+    <ClCompile Include="grid.cpp">
+      <Filter>object3D</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -89,28 +98,10 @@
     <ClInclude Include="matrix.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="object3d.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="sphere.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="group.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="camera.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="light.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="plane.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="triangle.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="transform.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="glCanvas.h">
@@ -124,6 +115,30 @@
     </ClInclude>
     <ClInclude Include="rayTree.h">
       <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="boundingbox.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="plane.h">
+      <Filter>object3D</Filter>
+    </ClInclude>
+    <ClInclude Include="group.h">
+      <Filter>object3D</Filter>
+    </ClInclude>
+    <ClInclude Include="triangle.h">
+      <Filter>object3D</Filter>
+    </ClInclude>
+    <ClInclude Include="sphere.h">
+      <Filter>object3D</Filter>
+    </ClInclude>
+    <ClInclude Include="object3d.h">
+      <Filter>object3D</Filter>
+    </ClInclude>
+    <ClInclude Include="transform.h">
+      <Filter>object3D</Filter>
+    </ClInclude>
+    <ClInclude Include="grid.hpp">
+      <Filter>object3D</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

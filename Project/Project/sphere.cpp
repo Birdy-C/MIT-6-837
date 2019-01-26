@@ -3,8 +3,15 @@
 #include "info.h"
 
 const float PI = 3.1415926;
+
+void Sphere::calculatebox()
+{
+	boundingbox = new BoundingBox(Vec3f(radius) + center, center - Vec3f(radius));
+}
+
 Sphere::Sphere(Vec3f c, float r, Material* m) : center(c), radius(r)
 {
+	calculatebox();
 	itsMaterial = m;
 }
 
@@ -122,4 +129,30 @@ void Sphere::paint(void)
 	}
 
 	glEnd();
+}
+
+void Sphere::insertIntoGrid(Grid * g, Matrix * m)
+{
+	if (NULL != m)
+	{
+		this->Object3D::insertIntoGrid(g, m);
+		return;
+	}
+
+	for (int i = 0; i < g->nx; i++)
+	{
+		for (int j = 0; j < g->ny; j++)
+		{
+			for (int k = 0; k < g->nz; k++)
+			{
+				// 中心到球心的距离加上方形斜边的距离（保证球一定在内部）
+				Vec3f t = g->center(i, j, k) - center;
+				if (t.Length() < radius)
+				{
+					g->setRecord(i, j, k);
+				}
+			}
+		}
+	}
+
 }

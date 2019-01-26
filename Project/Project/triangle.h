@@ -5,6 +5,7 @@ class Triangle:
 {
 	Vec3f a, b, c;
 	Vec3f normal;
+	void calculatebox();
 public:
 	Triangle(Vec3f &a, Vec3f &b, Vec3f &c, Material *m);
 	~Triangle();

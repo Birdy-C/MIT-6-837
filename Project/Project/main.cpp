@@ -45,6 +45,10 @@ float cutoff_weight = 0.01;
 bool shadows = false;
 bool useTransparentShadows = false;
 
+int nx, ny, nz;
+bool visualized_grid = false;
+bool usegrid = false;
+
 void render(void)
 {
 	Image img(width, height);
@@ -160,6 +164,20 @@ int main(int argc, char *argv[])
 			i++; assert(i < argc);
 			cutoff_weight = atof(argv[i]);
 		}
+		else if (!strcmp(argv[i], "-grid"))
+		{
+			usegrid = true;
+			i++; assert(i < argc);
+			nx = atof(argv[i]);
+			i++; assert(i < argc);
+			ny = atof(argv[i]);
+			i++; assert(i < argc);
+			nz = atof(argv[i]);
+		}
+		else if (!strcmp(argv[i], "-visualize_grid"))
+		{
+			visualized_grid = true;
+		}
 		else {
 			printf("whoops error with command line argument %d: '%s'\n", i, argv[i]);
 			assert(0);
@@ -167,9 +185,15 @@ int main(int argc, char *argv[])
 	}
 
 	mainapp = new SceneParser(input_file);
+	Grid *grid = NULL;
+	if (usegrid)
+	{
+		grid = new Grid((mainapp->getGroup()->getBoundingBox()), nx, ny, nz);
+	}
 	if (gui)
 	{
-		canvas.initialize(mainapp, render, traceRay);
+		mainapp->getGroup()->insertIntoGrid(grid, NULL);
+		canvas.initialize(mainapp, render, traceRay, grid, visualized_grid);
 		delete mainapp;
 	}
 	else

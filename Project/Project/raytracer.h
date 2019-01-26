@@ -5,6 +5,7 @@ class RayTracer
 {
 	// store the message needed in info.h
 public:
+	Grid *grid;
 	RayTracer();
 	~RayTracer();
 	Vec3f traceRay(Ray &ray, float tmin, int bounces, float weight,

@@ -31,14 +31,15 @@ def getPDF(url,file_name):
 
 
 def getFile(url, html):  
-    r=r'a href=\"(lectures/.*.pdf)\"'
+    r=r'a href=\"(lectures/[^<>]*?\.pdf)\"'
     fileRE = re.compile(r)  
     fileList = re.findall(fileRE,html)  
-    print fileList
+    #print fileList
     for fileURL in fileList:    
+        print fileURL
         # I don't know how to write regular expression there
-        if(fileURL.find('ppt')==-1):
-           getPDF("https://groups.csail.mit.edu/graphics/classes/6.837/F04/" + fileURL,fileURL)
+        #if(fileURL.find('ppt')==-1):
+        #getPDF("https://groups.csail.mit.edu/graphics/classes/6.837/F04/" + fileURL,fileURL)
 
 
 

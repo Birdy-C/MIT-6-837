@@ -11,14 +11,13 @@
   .h/.cpp/.txt 文件  
 
 - [**lecture**](lecture)  
-  课程pdf（未完成）
+  课程pdf
 
 - [**other**](other)
   - gl头文件
   - 爬虫文件，download.py文件:爬取网站的.c,.txt,.h文件，这个不太会写正则表达式 = = 有缘优化……
 
 ---
-
 
   然后其他的一些资料整理见  
   https://birdy-c.github.io/categories/Tech/MIT-6-837/  

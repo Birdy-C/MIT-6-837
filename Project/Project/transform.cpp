@@ -1,15 +1,22 @@
 #include "transform.h"
 #include "matrix.h"
 
+void Transform::calculatebox()
+{
+	boundingbox = NULL;
+}
+
 Transform::Transform(Matrix & m, Object3D * o)
 	:mat(m),obj(o)
 {
+	calculatebox();
 }
 
 Transform::~Transform()
 {
 
 }
+
 
 bool Transform::intersect(const Ray & r, Hit & h, float tmin)
 {
