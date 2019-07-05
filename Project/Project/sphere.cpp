@@ -69,8 +69,8 @@ void Sphere::paint(void)
 	Vec3f *points = new Vec3f[theta_steps * (phi_steps + 1)];
 
 	// initialize all the position for points
-	Vec3f top = center + Vec3f(0, 1, 0)*radius;
-	Vec3f below = center + Vec3f(0, -1, 0)*radius;
+	Vec3f top = center + Vec3f(0, 1, 0) * radius;
+	Vec3f below = center + Vec3f(0, -1, 0) * radius;
 
 	for (int iPhi = 0; iPhi < phi_steps + 1; iPhi++)
 	{
@@ -89,8 +89,8 @@ void Sphere::paint(void)
 			}
 			float tphi = iPhi * phi - PI / 2;
 			float ttheta = theta * iTheta;
-			points[index] = center + radius*sin(tphi)*Vec3f(0, 1, 0)
-				+ radius*cos(tphi)*cos(ttheta)*Vec3f(1, 0, 0) + radius*cos(tphi)*sin(ttheta)*Vec3f(0, 0, 1);
+			points[index] = center + radius*sin(tphi) * Vec3f(0, 1, 0)
+				+ radius*cos(tphi)*cos(ttheta) * Vec3f(1, 0, 0) + radius * cos(tphi) * sin(ttheta) * Vec3f(0, 0, 1);
 		}
 	}
 
@@ -133,6 +133,9 @@ void Sphere::paint(void)
 
 void Sphere::insertIntoGrid(Grid * g, Matrix * m)
 {
+	// Because Grid don't have a settled material, so set it to the material of sphere
+	glSetMaterial();
+
 	if (NULL != m)
 	{
 		this->Object3D::insertIntoGrid(g, m);
@@ -147,7 +150,7 @@ void Sphere::insertIntoGrid(Grid * g, Matrix * m)
 			{
 				// 中心到球心的距离加上方形斜边的距离（保证球一定在内部）
 				Vec3f t = g->center(i, j, k) - center;
-				if (t.Length() < radius)
+				if (t.Length() < radius + g->gethalfdiag())
 				{
 					g->setRecord(i, j, k);
 				}

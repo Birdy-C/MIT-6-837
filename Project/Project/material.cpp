@@ -121,7 +121,7 @@ void PhongMaterial::glSetMaterial(void) const
 	//glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT, zero);//»·¾³¹â
 
 	glMaterialfv(GL_FRONT_AND_BACK, GL_SPECULAR, specular);
-	//glMaterialfv(GL_FRONT_AND_BACK, GL_SPECULAR, zero);
+	// glMaterialfv(GL_FRONT_AND_BACK, GL_SPECULAR, one);
 
 	glMaterialfv(GL_FRONT_AND_BACK, GL_SHININESS, &glexponent);
 

@@ -76,7 +76,7 @@
       <SDLCheck>true</SDLCheck>
     </ClCompile>
     <Link>
-      <AdditionalLibraryDirectories>E:\2018秋冬\MIT-6-837\Project\Project\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>E:\2018秋冬\MIT - 6.837\Project\Project\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>glut32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
@@ -98,7 +98,7 @@
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalLibraryDirectories>E:\2018秋冬\MIT-6-837\Project\Project\lib</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>E:\2018秋冬\MIT - 6.837\Project\Project\lib</AdditionalLibraryDirectories>
       <AdditionalDependencies>glut32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalOptions> /SAFESEH:NO %(AdditionalOptions)</AdditionalOptions>
     </Link>
@@ -141,7 +141,7 @@
     <ClInclude Include="boundingbox.h" />
     <ClInclude Include="camera.h" />
     <ClInclude Include="glCanvas.h" />
-    <ClInclude Include="grid.hpp" />
+    <ClInclude Include="grid.h" />
     <ClInclude Include="group.h" />
     <ClInclude Include="hit.h" />
     <ClInclude Include="image.h" />

@@ -51,9 +51,6 @@
     <ClCompile Include="rayTree.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="boundingbox.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="group.cpp">
       <Filter>object3D</Filter>
     </ClCompile>
@@ -70,6 +67,9 @@
       <Filter>object3D</Filter>
     </ClCompile>
     <ClCompile Include="transform.cpp">
+      <Filter>object3D</Filter>
+    </ClCompile>
+    <ClCompile Include="boundingbox.cpp">
       <Filter>object3D</Filter>
     </ClCompile>
     <ClCompile Include="grid.cpp">
@@ -116,9 +116,6 @@
     <ClInclude Include="rayTree.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="boundingbox.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="plane.h">
       <Filter>object3D</Filter>
     </ClInclude>
@@ -137,7 +134,10 @@
     <ClInclude Include="transform.h">
       <Filter>object3D</Filter>
     </ClInclude>
-    <ClInclude Include="grid.hpp">
+    <ClInclude Include="boundingbox.h">
+      <Filter>object3D</Filter>
+    </ClInclude>
+    <ClInclude Include="grid.h">
       <Filter>object3D</Filter>
     </ClInclude>
   </ItemGroup>

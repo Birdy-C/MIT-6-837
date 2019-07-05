@@ -4,11 +4,11 @@
 #include "material.h"
 #include "ray.h"
 #include "hit.h"
-#include "grid.hpp"
+//#include "grid.h"
 #include "boundingbox.h"
 #include <gl/glut.h>
 
-class Gird;
+//extern class Grid;
 
 class Object3D
 {

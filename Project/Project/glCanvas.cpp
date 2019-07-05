@@ -7,7 +7,7 @@
 #include "rayTree.h"
 // Included files for OpenGL Rendering
 #include <gl/glut.h>
-
+#include "grid.h"
 // ========================================================
 
 // STATIC VARIABLES
@@ -118,7 +118,7 @@ void GLCanvas::display(void)
 	glEnable(GL_DEPTH_TEST);
 
 	// Place each of the lights in the scene
-	for (int i = 0; i<scene->getNumLights(); i++) {
+	for (int i = 0; i < scene->getNumLights(); i++) {
 		scene->getLight(i)->glInit(i);
 	}
 

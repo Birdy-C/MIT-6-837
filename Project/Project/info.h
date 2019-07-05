@@ -1,6 +1,7 @@
 #pragma once
 #include "scene_parser.h"
 #include "glCanvas.h"
+#include "grid.h"
 extern SceneParser *mainapp;
 extern GLCanvas canvas;
 extern int theta_steps;
@@ -12,3 +13,5 @@ extern float cutoff_weight;
 extern bool shadows;
 extern bool shade_back;
 extern bool useTransparentShadows;
+//extern class Grid;
+

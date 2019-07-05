@@ -1,0 +1,28 @@
+﻿  vectors.cpp
+  triangle.cpp
+  transform.cpp
+  sphere.cpp
+  scene_parser.cpp
+  rayTree.cpp
+e:\2018秋冬\mit - 6.837\project\project\raytree.cpp(18): warning C4101: “i”: 未引用的局部变量
+e:\2018秋冬\mit - 6.837\project\project\raytree.cpp(34): warning C4101: “i”: 未引用的局部变量
+  raytracer.cpp
+  plane.cpp
+  object3d.cpp
+  matrix.cpp
+  material.cpp
+  main.cpp
+  light.cpp
+  image.cpp
+e:\2018秋冬\mit - 6.837\project\project\image.cpp(14): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+e:\2018秋冬\mit - 6.837\project\project\image.cpp(20): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+e:\2018秋冬\mit - 6.837\project\project\image.cpp(44): warning C4101: “tmp”: 未引用的局部变量
+e:\2018秋冬\mit - 6.837\project\project\image.cpp(99): warning C4244: “参数”: 从“double”转换到“float”，可能丢失数据
+e:\2018秋冬\mit - 6.837\project\project\image.cpp(164): warning C4244: “参数”: 从“double”转换到“float”，可能丢失数据
+  group.cpp
+  grid.cpp
+  glCanvas.cpp
+  camera.cpp
+  boundingbox.cpp
+  正在生成代码...
+LINK : fatal error LNK1104: 无法打开文件“glut32.lib”

@@ -2,7 +2,7 @@
 #define _BOUNDING_BOX_H_
 
 #include "vectors.h"
-
+#include "ray.h"
 #include <assert.h>
 
 #define min2(a,b) (((a)<(b))?(a):(b))
@@ -14,6 +14,7 @@
 class BoundingBox {
 
 public:
+	float intersect(const Ray * ray, float tmin);
 
 	// CONSTRUCTOR & DESTRUCTOR
 	//BoundingBox(Vec3f _min, Vec3f _max) {

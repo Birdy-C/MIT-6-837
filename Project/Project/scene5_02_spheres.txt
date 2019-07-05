@@ -26,7 +26,7 @@ Background {
 Materials {
     numMaterials 1
     Material { 
-	diffuseColor 1 1 1
+	diffuseColor 0 0 0
     }
 }
 

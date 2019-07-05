@@ -22,11 +22,27 @@ public:
     direction = dir; }
   Ray (const Ray& r) {*this=r;}
 
+  // this function is used for calculate the 
+  float caculatemin(int type, float value) const {
+	  switch (type) {
+	  case 0:
+		  if (direction.x() == 0) return value;
+		  return (value - origin.x()) / direction.x();
+	  case 1:
+		  if (direction.y() == 0) return value;
+		  return (value - origin.y()) / direction.y();
+	  case 2:
+		  if (direction.z() == 0) return value;
+		  return (value - origin.z()) / direction.z();
+	  } 
+  }
+
   // ACCESSORS
   const Vec3f& getOrigin() const { return origin; }
   const Vec3f& getDirection() const { return direction; }
   Vec3f pointAtParameter(float t) const {
-    return origin+direction*t; }
+	  return origin + direction * t;
+  }
 
 private:
 

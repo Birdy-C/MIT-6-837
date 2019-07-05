@@ -1,3 +1,3 @@
 ﻿  grid.cpp
-  Project.vcxproj -> E:\2018秋冬\MIT-6-837\Project\Debug\Project.exe
-  Project.vcxproj -> E:\2018秋冬\MIT-6-837\Project\Debug\Project.pdb (Partial PDB)
+e:\2018秋冬\mit - 6.837\project\project\grid.cpp(108): error C2371: “temp”: 重定义；不同的基类型
+  e:\2018秋冬\mit - 6.837\project\project\grid.cpp(106): note: 参见“temp”的声明
