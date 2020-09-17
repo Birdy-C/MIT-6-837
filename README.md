@@ -1,10 +1,12 @@
 # 6.837 Intro to Computer Graphics, Fall 2004
 
-Course Requirement:
 
-https://groups.csail.mit.edu/graphics/classes/6.837/F04/calendar.html
 
 ![](pic/title.png)
+
+Course Calendar:
+
+https://groups.csail.mit.edu/graphics/classes/6.837/F04/calendar.html
 
 ---
 
@@ -12,21 +14,18 @@ https://groups.csail.mit.edu/graphics/classes/6.837/F04/calendar.html
 
 This is a rather old course, but cause the basic idea behind computer graphics did not change that much, it is still a good start for anyone interested in that. (And it's not that easy to get access to the high-quality course material even now.)
 
+![result4](pic/result4.png)
 
+What will you do in the course..
 
-In assignment 0, you will get to know more about the self-similar fractals.
-
-In assignment 1-4, you will get a basic ray tracer!
-
-![result4](pic\result4.png)
-
-Assignment 5-7 will give your program more speed and higher quality.
-
-Assignment 8 focuses on the curve, and 9 give your the chance to implemented a particle system!
+- In assignment 0, you will get to know more about the self-similar fractals.
+- In assignment 1-4, you will get a basic ray tracer!
+- Assignment 5-7 will give your program more speed and higher quality.
+- Assignment 8 focuses on the curve, and 9 give your the chance to implemented a particle system!
 
 
 
-## Get Started
+## Let's Get Started!
 
 ### > Start the project on your own..
 
@@ -46,8 +45,7 @@ Now I only finish the first five project. It's temporary in [**My Result**](\My 
 
 
 
-##　Other Resources
-
+## Other Resources
 
 - [Ray Tracing in One Weekend](https://raytracing.github.io/books/RayTracingInOneWeekend.html)
 - [PBRT] Physically Based Rendering, Second Edition: From Theory To Implementation. Pharr, Matt and Humphreys, Greg. 2010.
