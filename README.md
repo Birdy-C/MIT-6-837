@@ -1,29 +1,54 @@
 # 6.837 Intro to Computer Graphics, Fall 2004
 
-课程要求：https://groups.csail.mit.edu/graphics/classes/6.837/F04/calendar.html
+Course Requirement:
+
+https://groups.csail.mit.edu/graphics/classes/6.837/F04/calendar.html
+
+![](pic/title.png)
 
 ---
 
-- [**Result**](Result)
-  各次assignment对应的source code和exe     
+## Introduction
 
-- [**file**](file)  
-  .h/.cpp/.txt 文件  
-
-- [**lecture**](lecture)  
-  课程pdf
-
-- [**other**](other)
-  - gl头文件
-  - 爬虫文件，download.py文件:爬取网站的.c,.txt,.h文件，这个不太会写正则表达式 = = 有缘优化……
-
----
-
-  然后其他的一些资料整理见  
-  https://birdy-c.github.io/categories/Tech/MIT-6-837/  
-  包括没啥精力写的Extra credit的一些思考  
+This is a rather old course, but cause the basic idea behind computer graphics did not change that much, it is still a good start for anyone interested in that. (And it's not that easy to get access to the high-quality course material even now.)
 
 
 
+In assignment 0, you will get to know more about the self-similar fractals.
 
+In assignment 1-4, you will get a basic ray tracer!
+
+![result4](pic\result4.png)
+
+Assignment 5-7 will give your program more speed and higher quality.
+
+Assignment 8 focuses on the curve, and 9 give your the chance to implemented a particle system!
+
+
+
+## Get Started
+
+### > Start the project on your own..
+
+This repository may help save you some time downloading the code file or slides.
+
+The code lies in [**lectures**](\Original Files\lectures) while the slides in [**tasks**](\Original Files\tasks).
+
+If you are interested in this project, **PR welcome**!
+
+
+
+### > If you need some base code..
+
+I plan to put all the home work into one solution. I plan to leave some blank that student can easily "fill in" instead of write the whole structure.
+
+Now I only finish the first five project. It's temporary in [**My Result**](\My Result) now.
+
+
+
+##　Other Resources
+
+
+- [Ray Tracing in One Weekend](https://raytracing.github.io/books/RayTracingInOneWeekend.html)
+- [PBRT] Physically Based Rendering, Second Edition: From Theory To Implementation. Pharr, Matt and Humphreys, Greg. 2010.
 
