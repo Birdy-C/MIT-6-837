@@ -1,0 +1,36 @@
+
+PerspectiveCamera {
+    center    1.895840 7.086697 5.906538
+    direction -0.190904 -0.792889 -0.578691
+    up        0.000000 1.000000 0.000000
+    angle 50
+}
+
+Lights {
+    numLights 1
+    DirectionalLight {
+        direction -0.2 -1 -0.5
+        color 0.9 0.9 0.9 
+    }
+}
+
+Background {
+    color 0.2 0 0.6
+    ambientLight 0.1 0.1 0.1 
+}
+
+Materials {
+    numMaterials 1
+    PhongMaterial {	
+        diffuseColor 1 0 0 
+    }
+}
+
+Group {
+    numObjects 1
+
+    MaterialIndex 0
+    TriangleMesh {
+        obj_file torus_high.obj
+    }
+}

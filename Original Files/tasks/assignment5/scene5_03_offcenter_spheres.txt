@@ -1,0 +1,58 @@
+
+OrthographicCamera {
+    center 0 3 10 
+    direction 0 0 -1
+    up 0 1 0
+    size 5
+}
+
+Lights {
+    numLights 2
+    DirectionalLight {
+        direction 0.3 -1 -0.6 
+        color 1.0 1.0 1.0
+    }
+    DirectionalLight {
+        direction -0.3 1 0.6
+        color 0.6 0.6 0.6
+    }
+}
+
+Background {
+    color 0.2 0.0 0.6
+    ambientLight 0.0 0.0 0.0
+}
+
+Materials {
+    numMaterials 1
+    Material { 
+	diffuseColor 1 1 1
+    }
+}
+
+Group {
+    numObjects 5
+
+    MaterialIndex 0
+    Sphere {
+	center 0 3 0 
+        radius 0.5
+    }
+    Sphere {
+	center 1 4 1 
+        radius 0.5
+    }
+    Sphere {
+	center -1 2 1 
+        radius 0.5
+    }
+    Sphere {
+	center -1 4 -1 
+        radius 0.5
+    }
+    Sphere {
+	center 1 2 -1 
+        radius 0.5 
+    }
+}
+

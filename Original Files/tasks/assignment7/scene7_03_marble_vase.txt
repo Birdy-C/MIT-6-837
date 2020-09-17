@@ -1,0 +1,79 @@
+
+PerspectiveCamera {
+    center 0 6 20
+    direction 0 -2 -20
+    up 0 1 0
+    angle 30
+}
+
+Lights {
+    numLights 2
+    DirectionalLight {
+        direction -0.7 -0.8 -1
+        color 0.5 0.5 0.5
+    }
+
+    DirectionalLight {
+        direction 0.5 -0.8 -0.7
+        color 0.5 0.5 0.5
+    }
+}
+
+Background {
+    color 0.4 0.2 0.8
+    ambientLight 0.4 0.4 0.4
+}
+
+Materials {
+    numMaterials 6
+    PhongMaterial {
+        diffuseColor 0.5 0.2 0.1
+	specularColor 0 0 0
+    }
+    PhongMaterial {
+        diffuseColor 1 0.8 0.8
+	specularColor 0 0 0
+    }
+    Marble {
+        Transform {
+            UniformScale 0.5
+        }
+        materialIndex 0
+        materialIndex 1
+	octaves 5
+	frequency 8
+	amplitude 4
+    }
+    PhongMaterial {
+        diffuseColor 1 1 1
+	specularColor 0 0 0
+    }
+    PhongMaterial {
+        diffuseColor 0 0 0
+	specularColor 0 0 0
+    }
+    Noise {
+        Transform {
+            UniformScale 0.3
+        }
+        materialIndex 3
+        materialIndex 4
+	octaves 5
+    }
+}
+
+Group {
+    numObjects 2
+
+    MaterialIndex 2
+    TriangleMesh {
+        obj_file vase.obj
+    }
+
+    MaterialIndex 5
+    Plane {
+	normal 0 1 0
+        offset -0.02
+    }
+}
+

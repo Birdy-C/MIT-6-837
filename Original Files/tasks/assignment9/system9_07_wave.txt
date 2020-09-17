@@ -1,0 +1,41 @@
+num_systems 3
+
+system
+hose_generator {
+  position -5 -2 0
+  velocity  0.5 0 0
+  lifespan 20
+}
+euler_integrator {
+}
+vertical_forcefield {
+  magnitude 4
+}
+
+
+system
+hose_generator {
+  position -5 -2 0
+  velocity  0.5 0 0
+  lifespan 20
+}
+midpoint_integrator {
+}
+vertical_forcefield {
+  magnitude 4
+}
+
+
+system
+hose_generator {
+  position -5 -2 0
+  velocity  0.5 0 0
+  lifespan 20
+}
+rungekutta_integrator {
+}
+vertical_forcefield {
+  magnitude 4
+}
+
+

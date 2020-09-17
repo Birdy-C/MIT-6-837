@@ -1,0 +1,52 @@
+
+PerspectiveCamera {
+    center    -0.084519 0.313242 0.855356
+    direction 0.049361 -0.139598 -0.988977
+    up        0 1 0 
+    angle      26
+}
+
+Lights {
+    numLights 2
+    DirectionalLight {
+        direction 0.4 -0.8 -0.3
+	color 0.3 0.3 0.3
+    }
+    DirectionalLight {
+        direction -0.3 -1 -0.5
+	color 0.5 0.5 0.5
+    }
+}
+
+Background {
+    color 0.2 0 0.6 
+    ambientLight 0.2 0.2 0.2
+}
+
+Materials {
+    numMaterials 2
+    PhongMaterial {	
+        diffuseColor 0.79 0.66 0.44
+	specularColor 0.4 0.4 0.4
+	exponent 10
+    }
+    PhongMaterial {	
+        diffuseColor 0.15 0.9 0.3
+	specularColor 0 0 0
+	exponent 100
+    }
+}
+
+Group {
+    numObjects 2
+    MaterialIndex 0
+    TriangleMesh {
+        obj_file bunny_1k.obj
+    }
+    MaterialIndex 1
+    Plane {
+	normal 0.0 1 0.0
+        offset 0.06
+    }
+}
+

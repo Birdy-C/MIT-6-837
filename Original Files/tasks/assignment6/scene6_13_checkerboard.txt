@@ -1,0 +1,79 @@
+
+PerspectiveCamera {
+    center 0 0 5
+    direction 0 0 -1
+    up 0 1 0
+    angle 30
+}
+
+Lights {
+    numLights 2
+    DirectionalLight {
+        direction 0.5 -1 -1 
+        color 0.6 0.6 0.6
+    }
+    DirectionalLight {
+        direction -0.5 -1 -1
+        color 0.5 0.5 0.5
+    }
+}
+
+Materials {
+    numMaterials 6
+    PhongMaterial {
+        diffuseColor 1 0 0 
+	specularColor 1 1 1
+	exponent 64
+    }
+    PhongMaterial {
+        diffuseColor 0 0 1
+	specularColor 1 1 1
+	exponent 64
+    }
+    Checkerboard {
+        Transform {
+	    UniformScale 2
+        }
+        materialIndex 0
+        materialIndex 1
+    }
+    PhongMaterial {
+        diffuseColor 0 1 0
+	specularColor 1 1 1
+	exponent 64
+    }
+    PhongMaterial {
+        diffuseColor 1 1 0
+	specularColor 1 1 1
+	exponent 64
+    }
+    Checkerboard {
+        Transform {
+	    UniformScale 0.75
+        }
+        materialIndex 3
+        materialIndex 4
+    }
+}
+
+Background {
+    color 0 0 0
+    ambientLight 0.1 0.1 0.1
+}
+
+Group {
+    numObjects 2
+
+    MaterialIndex 2
+    Sphere {
+	center 0 0.1 0 
+        radius 1
+    }
+
+    MaterialIndex 5
+    Plane {
+	normal 0 1 0
+        offset -1.02
+    }
+}
+

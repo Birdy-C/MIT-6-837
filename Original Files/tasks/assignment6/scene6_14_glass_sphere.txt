@@ -1,0 +1,116 @@
+PerspectiveCamera {
+    center 0 7 10
+    direction 0 -0.5 -1
+    up 0 1 0
+    angle 20
+}
+
+Lights {
+    numLights 2
+    DirectionalLight {
+        direction -0.3 -1 -0.5 
+	color 0.6 0.6 0.6
+    }
+    DirectionalLight {
+        direction 0.3 -1 -0.5 
+	color 0.3 0.3 0.3
+    }
+}
+
+Background {
+    color 0.2 0.1 0.5
+    ambientLight 0.1 0.1 0.1 
+}
+
+Materials {
+    numMaterials 7
+
+    PhongMaterial {
+        diffuseColor 1 0 0 
+    }
+
+    PhongMaterial {
+        diffuseColor 0 1 0 
+    }
+
+    PhongMaterial {
+        diffuseColor 0 0 1 
+    }
+
+    PhongMaterial {
+        diffuseColor 0.1 0.1 0.1 
+	specularColor 1 1 1 
+	exponent 100
+	transparentColor 0.7 0.7 0.7
+	reflectiveColor 0.3 0.3 0.3
+	indexOfRefraction 2.0
+    }
+
+    PhongMaterial {
+        diffuseColor 1 1 1
+    }
+    PhongMaterial {
+        diffuseColor 0 0 0
+    }
+
+    Checkerboard {
+         Transform {
+	     UniformScale 0.75
+         }
+         materialIndex 4
+         materialIndex 5
+    }
+}
+
+Group {
+    numObjects 5
+
+    MaterialIndex 6
+    Plane {
+	normal 0 1 0
+        offset -0.02
+    }
+
+    MaterialIndex 0
+    Transform {
+        Translate  -0.8 0 -3 
+	Scale  0.2 1.4 0.2 
+	YRotate  45 
+        Translate  0 1 0 
+        TriangleMesh {
+       	    obj_file cube.obj
+	}
+    }
+
+    MaterialIndex 1
+    Transform {
+        Translate  0 0 -3 
+	Scale  0.2 1.4 0.2 
+	YRotate  45 
+        Translate  0 1 0 
+        TriangleMesh {
+       	    obj_file cube.obj
+	}
+    }
+
+    MaterialIndex 2
+    Transform {
+        Translate  0.8 0 -3 
+	Scale  0.2 1.4 0.2 
+	YRotate  45 
+        Translate  0 1 0 
+        TriangleMesh {
+       	    obj_file cube.obj
+	}
+    }
+
+    MaterialIndex 3
+    Sphere {
+	center 0 2 0
+        radius 1.5
+    }
+
+
+}
+
+
