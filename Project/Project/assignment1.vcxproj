@@ -21,24 +21,16 @@
   <ItemGroup>
     <ClCompile Include="..\assignment1\main.cpp" />
     <ClCompile Include="..\assignment1\scene_parser.cpp" />
-    <ClCompile Include="..\RayTracer\camera.cpp" />
-    <ClCompile Include="..\RayTracer\obj\group.cpp" />
-    <ClCompile Include="..\RayTracer\obj\object3d.cpp" />
-    <ClCompile Include="..\RayTracer\obj\sphere.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\assignment1\scene_parser.h" />
-    <ClInclude Include="..\RayTracer\camera.h" />
-    <ClInclude Include="..\RayTracer\hit.h" />
-    <ClInclude Include="..\RayTracer\material.h" />
-    <ClInclude Include="..\RayTracer\obj\group.h" />
-    <ClInclude Include="..\RayTracer\obj\object3d.h" />
-    <ClInclude Include="..\RayTracer\obj\sphere.h" />
-    <ClInclude Include="..\RayTracer\ray.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="StaticLib.vcxproj">
       <Project>{10184028-3af7-4927-88c9-a0703fc4c2a1}</Project>
+    </ProjectReference>
+    <ProjectReference Include="StaticLib_raytracer.vcxproj">
+      <Project>{82e7dcab-dec1-4d3e-be6f-b8ad0d7c53c6}</Project>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup Label="Globals">

@@ -31,7 +31,7 @@ What will you do in the course..
 
 This repository may help save you some time downloading the code file or slides.
 
-The code lies in [**lectures**](\Original Files\lectures) while the slides in [**tasks**](\Original Files\tasks).
+The code lies in [**lectures**](Original Files\lectures) while the slides in [**tasks**](Original Files\tasks).
 
 If you are interested in this project, **PR welcome**!
 
@@ -41,7 +41,11 @@ If you are interested in this project, **PR welcome**!
 
 I plan to put all the home work into one solution. I plan to leave some blank that student can easily "fill in" instead of write the whole structure.
 
-Now I only finish the first five project. It's temporary in [**My Result**](\My Result) now.
+Now I only finish the first five project. It's temporary in [**My Result**](My Result) now.
+
+>  Visual studio 2017
+>
+> 配置属性-调试-命令参数
 
 
 

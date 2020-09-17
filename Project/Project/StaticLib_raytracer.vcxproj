@@ -18,9 +18,31 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\raytracer\camera.cpp" />
+    <ClCompile Include="..\raytracer\obj\group.cpp" />
+    <ClCompile Include="..\raytracer\obj\object3d.cpp" />
+    <ClCompile Include="..\raytracer\obj\plane.cpp" />
+    <ClCompile Include="..\raytracer\obj\sphere.cpp" />
+    <ClCompile Include="..\raytracer\obj\transform.cpp" />
+    <ClCompile Include="..\raytracer\obj\triangle.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\raytracer\camera.h" />
+    <ClInclude Include="..\raytracer\hit.h" />
+    <ClInclude Include="..\raytracer\light.h" />
+    <ClInclude Include="..\raytracer\material.h" />
+    <ClInclude Include="..\raytracer\obj\group.h" />
+    <ClInclude Include="..\raytracer\obj\object3d.h" />
+    <ClInclude Include="..\raytracer\obj\plane.h" />
+    <ClInclude Include="..\raytracer\obj\sphere.h" />
+    <ClInclude Include="..\raytracer\obj\transform.h" />
+    <ClInclude Include="..\raytracer\obj\triangle.h" />
+    <ClInclude Include="..\raytracer\ray.h" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
-    <ProjectGuid>{10184028-3AF7-4927-88C9-A0703FC4C2A1}</ProjectGuid>
+    <ProjectGuid>{82E7DCAB-DEC1-4D3E-BE6F-B8AD0D7C53C6}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>StaticLib</RootNamespace>
     <WindowsTargetPlatformVersion>10.0.17134.0</WindowsTargetPlatformVersion>
@@ -90,7 +112,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>..\staticlib;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\common;..\raytracer;..\staticlib</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -147,15 +169,6 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <ClInclude Include="..\common\image.h" />
-    <ClInclude Include="..\common\matrix.h" />
-    <ClInclude Include="..\common\vectors.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="..\common\image.cpp" />
-    <ClCompile Include="..\common\matrix.cpp" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

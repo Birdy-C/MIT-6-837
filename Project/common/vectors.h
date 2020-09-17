@@ -500,10 +500,23 @@ public:
     float z = v1.data[0]*v2.data[1] - v1.data[1]*v2.data[0];
     c.data[0] = x; c.data[1] = y; c.data[2] = z; }
 
+
   // INPUT / OUTPUT
   void Write(FILE *F = stdout) const {
     fprintf (F, "%f %f %f %f\n",data[0],data[1],data[2],data[3]); }
   
+  Vec3f GetVec3fWipe() {
+      return Vec3f(x(), y(), z());
+  }
+
+  Vec3f GetVec3f() {
+      if (w() != 0) {
+          return Vec3f(x() / w(), y() / w(), z() / w());
+      }
+      else {
+          return Vec3f(x(), y(), z());
+      }
+  }
 private:
 
   friend class Matrix;

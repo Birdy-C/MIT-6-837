@@ -365,10 +365,29 @@ void Matrix::Read3x3(FILE *F) {
   } 
 }
 
+Vec4f Matrix::multiT(Vec4f & vec, const Matrix & f)
+{
+	//这个是Vec4f T * Matrix
+	float temp[4] = { 0 };
+	for (int i = 0; i < 4; i++)
+	{
+		for (int j = 0; j < 4; j++)
+		{
+			//cout << vec[i] << ' ' << f.Get(j, i) << endl;
+			temp[i] += (float)vec[i] * f.Get(j, i);
+		}
+	}
+	vec.Set(temp[0], temp[1], temp[2], temp[3]);
+	return vec;
+}
+
+
+
 // ====================================================================
 // ====================================================================
 Vec4f operator*=(Vec4f &vec, const Matrix& f)
 {
+	//其实应该是Matrix * Vec4f
 	float temp[4] = { 0 };
 	for (int i = 0; i < 4; i++)
 	{
@@ -381,3 +400,4 @@ Vec4f operator*=(Vec4f &vec, const Matrix& f)
 	vec.Set(temp[0], temp[1], temp[2], temp[3]);
 	return vec;
 }
+

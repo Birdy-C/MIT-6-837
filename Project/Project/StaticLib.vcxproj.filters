@@ -24,21 +24,12 @@
     <ClInclude Include="..\common\vectors.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="..\common\stdafx.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="..\common\targetver.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\common\matrix.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="..\common\image.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="..\common\stdafx.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

@@ -15,15 +15,15 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\assignment1\main.cpp">
+    <ClCompile Include="..\assignment2\scene_parser.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="..\assignment1\scene_parser.cpp">
+    <ClCompile Include="..\assignment2\main.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\assignment1\scene_parser.h">
+    <ClInclude Include="..\assignment2\scene_parser.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

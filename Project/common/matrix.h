@@ -101,7 +101,7 @@ public:
   void Write3x3(FILE *F = stdout) const;
   void Read(FILE *F);
   void Read3x3(FILE *F);
-  
+  Vec4f multiT(Vec4f &vec, const Matrix& f);
 private:
 
   // REPRESENTATION

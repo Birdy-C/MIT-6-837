@@ -1,7 +1,6 @@
-#pragma once
+﻿#pragma once
 #include "vectors.h"
 #include "ray.h"
-
 class Camera
 {
 protected:
@@ -9,7 +8,6 @@ protected:
 	Vec3f direction;
 	Vec3f up;
 	Vec3f horizontal;
-	float size;
 public:
 	Camera();
 	virtual ~Camera();
@@ -23,17 +21,23 @@ public:
 class OrthographicCamera :
 	public Camera
 {
-
+	float size;
 
 public:
-	OrthographicCamera(Vec3f tcenter, Vec3f tdirection, Vec3f tup, int tsize);
-
+	OrthographicCamera(Vec3f &tcenter, Vec3f &tdirection, Vec3f &tup, float tsize);
 	~OrthographicCamera();
 
 	virtual Ray generateRay(Vec2f point);
 	virtual float getTMin() const;
-
 };
 
-
-
+class PerspectiveCamera :
+	public Camera
+{
+	float angle;
+public:
+	PerspectiveCamera(Vec3f &tcenter, Vec3f &tdirection, Vec3f &tup, float tangle);
+	~PerspectiveCamera();
+	virtual Ray generateRay(Vec2f point);
+	virtual float getTMin() const;
+};
