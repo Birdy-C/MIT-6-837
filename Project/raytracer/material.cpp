@@ -7,6 +7,8 @@
 #include <algorithm>
 #include <cmath>
 #include "material.h"
+// include glCanvas.h to access the preprocessor variable SPECULAR_FIX
+//#include "glCanvas.h"  
 #include "info.h"
 #include <gl/glut.h>
 
@@ -16,17 +18,6 @@
 extern int SPECULAR_FIX_WHICH_PASS;
 #endif
 
-Vec3f Material::Shade(const Ray & ray, const Hit & hit, const Vec3f & dirToLight, const Vec3f & lightColor) const
-{
-    assert(false);
-    return Vec3f();
-}
-
-void Material::glSetMaterial(void) const
-{
-    assert(false);
-}
-
 // ====================================================================
 // Set the OpenGL parameters to render with the given material
 // attributes.
@@ -34,6 +25,13 @@ void Material::glSetMaterial(void) const
 
 PhongMaterial::PhongMaterial(const Vec3f & diffuseColor, const Vec3f & tspecularColor, float texponent)
 	:Material(diffuseColor), specularColor(tspecularColor), exponent(texponent) {}
+
+PhongMaterial::PhongMaterial(const Vec3f & diffuseColor, const Vec3f & tspecularColor, float texponent,
+	const Vec3f & treflectiveColor, const Vec3f & ttransparentColor, float tindexOfRefraction)
+	: Material(diffuseColor), specularColor(tspecularColor), exponent(texponent),
+	reflectiveColor(treflectiveColor), transparentColor(ttransparentColor), indexOfRefraction(tindexOfRefraction)
+{
+}
 
 Vec3f PhongMaterial::Shade(const Ray & ray, const Hit & hit, const Vec3f & dirToLight, const Vec3f & lightColor) const
 {
@@ -44,9 +42,15 @@ Vec3f PhongMaterial::Shade(const Ray & ray, const Hit & hit, const Vec3f & dirTo
 	dirlightnormal.Normalize();
 	// 
 	float t = dirlightnormal.Dot3(hit.getNormal());
-	if (t < 0)
+	if (t < 0 && shade_back)
 		return Vec3f(0, 0, 0);
-	Vec3f Diffuse = t *getDiffuseColor();
+
+	Vec3f Diffuse;
+	if (shade_back)
+		Diffuse = std::max(t, (float)0) *getDiffuseColor();
+	else
+		Diffuse = std::abs(t) *getDiffuseColor();
+
 	//Vec3f Diffuse;
 
 	// specular
@@ -58,12 +62,20 @@ Vec3f PhongMaterial::Shade(const Ray & ray, const Hit & hit, const Vec3f & dirTo
 	{
 		Vec3f r = dirlightnormal - raydire;
 		r.Normalize();
-		Specular = std::pow(std::max(hit.getNormal().Dot3(r), (float)0), exponent)*getSpecularColor();
+		if (shade_back)
+			Specular = std::pow(std::max(hit.getNormal().Dot3(r), (float)0), exponent)*getSpecularColor();
+		else
+			Specular = std::pow(std::abs(hit.getNormal().Dot3(r)), exponent)*getSpecularColor();
+
 	}
 	else
 	{
 		Vec3f r = 2 * t * hit.getNormal() - dirlightnormal;
-		Specular = std::pow(std::max(-raydire.Dot3(r), (float)0), exponent)*getSpecularColor();
+		if (shade_back)
+			Specular = std::pow(std::max(-raydire.Dot3(r), (float)0), exponent)*getSpecularColor();
+		else
+			Specular = std::pow(std::abs(-raydire.Dot3(r)), exponent)*getSpecularColor();
+
 	}
 	//Vec3f Specular = std::pow(std::max(-raydire.Dot3(r), (float)0), 40)*getSpecularColor();
 
@@ -139,7 +151,7 @@ void PhongMaterial::glSetMaterial(void) const
 		glMaterialfv(GL_FRONT_AND_BACK, GL_DIFFUSE, diffuse);
 		glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT, diffuse);
 		glMaterialfv(GL_FRONT_AND_BACK, GL_SPECULAR, zero);
-}
+	}
 
 #endif
 }

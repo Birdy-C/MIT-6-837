@@ -1,5 +1,6 @@
+#include "stdafx.h"
 #include "rayTree.h"
-#include <GL/gl.h>
+#include <gl/glut.h>
 
 // ====================================================================
 // Initialize the static variables

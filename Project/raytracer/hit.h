@@ -31,12 +31,8 @@ public:
 	Material* getMaterial() const { return material; }
 	Vec3f getNormal() const { return normal; }
 	Vec3f getIntersectionPoint() const { return intersectionPoint; }
-
+	void initialize() { t = std::numeric_limits<float>::max(); }
 	// MODIFIER
-    void set(float _t, Material *m, const Ray &ray) {
-        t = _t; material = m;
-        intersectionPoint = ray.pointAtParameter(t);
-    }
 	void set(float _t, Material *m, Vec3f n, const Ray &ray) {
 		t = _t; material = m; normal = n;
 		intersectionPoint = ray.pointAtParameter(t);

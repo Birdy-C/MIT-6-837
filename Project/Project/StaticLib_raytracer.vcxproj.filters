@@ -51,6 +51,9 @@
     <ClCompile Include="..\raytracer\info.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="..\raytracer\rayTree.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\raytracer\hit.h">
@@ -87,6 +90,9 @@
       <Filter>头文件\obj</Filter>
     </ClInclude>
     <ClInclude Include="..\raytracer\info.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\raytracer\rayTree.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
