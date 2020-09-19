@@ -42,6 +42,15 @@
     <ClCompile Include="..\raytracer\obj\sphere.cpp">
       <Filter>源文件\obj</Filter>
     </ClCompile>
+    <ClCompile Include="..\raytracer\light.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\raytracer\material.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\raytracer\info.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\raytracer\hit.h">
@@ -76,6 +85,9 @@
     </ClInclude>
     <ClInclude Include="..\raytracer\obj\plane.h">
       <Filter>头文件\obj</Filter>
+    </ClInclude>
+    <ClInclude Include="..\raytracer\info.h">
+      <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

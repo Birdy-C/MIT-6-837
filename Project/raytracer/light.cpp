@@ -1,6 +1,7 @@
-#include <GL/gl.h>
-
+#include "stdafx.h"
+#define GLUT_DISABLE_ATEXIT_HACK
 #include "light.h"
+#include <gl/glut.h>
 
 // ====================================================================
 // Given below are the bodies of the glInit function for the

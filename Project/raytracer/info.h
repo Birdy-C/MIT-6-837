@@ -1,8 +1,6 @@
 #pragma once
-#include "scene_parser.h"
-#include "glCanvas.h"
+class SceneParser;
 extern SceneParser *mainapp;
-extern GLCanvas canvas;
 extern int theta_steps;
 extern int phi_steps;
 extern bool gouraud;

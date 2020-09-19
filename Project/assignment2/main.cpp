@@ -4,7 +4,6 @@
 #include <iostream>
 #include <cassert>
 #include <algorithm>
-//#include "ifs.h"
 #include "scene_parser.h"
 #include "image.h"
 #include "matrix.h"

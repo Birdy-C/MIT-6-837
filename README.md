@@ -45,7 +45,9 @@ Now I only finish the first five project. It's temporary in [**My Result**](My R
 
 >  Visual studio 2017
 >
-> 配置属性-调试-命令参数
+>  配置属性-调试-命令参数
+>
+>  Add glut32.dll to execute folder (start from assignment3)
 
 
 

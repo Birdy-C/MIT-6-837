@@ -91,6 +91,9 @@
       <SDLCheck>true</SDLCheck>
       <AdditionalIncludeDirectories>..\common;..\raytracer;..\raytracer\obj;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
+    <Link>
+      <AdditionalLibraryDirectories>..\lib</AdditionalLibraryDirectories>
+    </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>

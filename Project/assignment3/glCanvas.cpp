@@ -1,14 +1,12 @@
+#define GLUT_DISABLE_ATEXIT_HACK
 #include "glCanvas.h"
-#include "scene_parser.h"
 #include "light.h"
 #include "camera.h"
 #include "group.h"
-
+#include "scene_parser.h"
 // Included files for OpenGL Rendering
-#include <GL/gl.h>
-#include <GL/glut.h>
+#include <gl/glut.h>
 
-// ========================================================
 
 // STATIC VARIABLES
 
@@ -107,7 +105,7 @@ void GLCanvas::display(void)
   // ========================================================
   // DRAW AXES
   // remove this line once you've started rendering primitive objects
-  drawAxes(); 
+  // drawAxes(); 
   // ========================================================
 
   glEnable(GL_LIGHTING);
