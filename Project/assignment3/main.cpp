@@ -29,7 +29,6 @@ float depth_min = 0;
 float depth_max = 1;
 char *depth_file = NULL;
 char *normal_file = NULL;
-bool shade_back = false;
 bool gui = false;
 GLCanvas canvas;
 

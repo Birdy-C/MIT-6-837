@@ -123,11 +123,13 @@ void OrthographicCamera::rotateCamera(float rx, float ry)
 	rotMat *= Matrix::MakeAxisRotation(horizontal, ry);
 	rotMat.Transform(center);
 	rotMat.TransformDirection(direction);
-	Vec3f::Cross3(horizontal, up, direction);
-	horizontal.Normalize();
 	// =========================================== 
 	// ASSIGNMENT 3: Fix any other affected values 
 	// ===========================================
+    rotMat.TransformDirection(up);
+    up.Normalize();
+    rotMat.TransformDirection(horizontal);
+    horizontal.Normalize();
 }
 
 
@@ -246,9 +248,11 @@ void PerspectiveCamera::rotateCamera(float rx, float ry)
 	rotMat.TransformDirection(direction);
 	direction.Normalize();
 
-	Vec3f::Cross3(horizontal, up, direction);
-	horizontal.Normalize();
 	// =========================================== 
 	// ASSIGNMENT 3: Fix any other affected values 
 	// =========================================== 
+    rotMat.TransformDirection(up);
+    up.Normalize();
+    rotMat.TransformDirection(horizontal);
+    horizontal.Normalize();
 }

@@ -27,6 +27,7 @@ public:
 	// dir may not be normaized for information of direction
 
     // The following function should be pure virtual, but cause assignment1 need to instance Material class.
+    // assignment3
     virtual Vec3f Shade(const Ray &ray, const Hit &hit, const Vec3f &dirToLight, const Vec3f &lightColor) const { assert(0); return Vec3f(0, 0, 0); };
 	virtual void glSetMaterial(void) const { assert(0); };
 	virtual Vec3f getSpecularColor() const { assert(0); return Vec3f(0, 0, 0); };
