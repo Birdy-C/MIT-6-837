@@ -48,6 +48,10 @@ Now I only finish the first five project. It's temporary in [**My Result**](My R
 >  配置属性-调试-命令参数
 >
 >  Add glut32.dll to execute folder (start from assignment3)
+>
+>  If a function has assert(0) - this function should be pure virtual, but cause in previous assignment need to instance such abstract class, I leave it this way.
+>
+>  Rebuild the project when change startup project (this is a bad design in the code, I generate the mid result in same folder)
 
 
 

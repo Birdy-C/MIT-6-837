@@ -68,6 +68,8 @@ int main(int argc, char *argv[])
 
 	// ========================================================
 	// ========================================================
+
+    // TODO1
 	SceneParser mainapp(input_file);
 	Image img(width, height);
 	Image depthimg(width, height);
@@ -89,8 +91,8 @@ int main(int argc, char *argv[])
 			if (itemAll->intersect(rayTemp, result, cameraAll->getTMin()))
 			{
 				assert(NULL != result.getMaterial());
-				img.SetPixel(height - j - 1, width - i - 1, (result.getMaterial())->getDiffuseColor());
-				depthimg.SetPixel(height - j - 1, width - i - 1, setcolor(depth_min, depth_max, result.getT()));
+				img.SetPixel(height - j - 1, i, (result.getMaterial())->getDiffuseColor());
+				depthimg.SetPixel(height - j - 1, i, setcolor(depth_min, depth_max, result.getT()));
 
 			}
 		}

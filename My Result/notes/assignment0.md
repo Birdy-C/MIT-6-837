@@ -4,7 +4,9 @@
 https://github.com/birdy-C/MIT-6-837/tree/master/Result/assignment0
 
 这个assignment大概就是了解了一下分形相关的知识。之前对于分形的认知只有递归调用输出一种。（也就是wiki里的Shrinking and duplication）
+
 https://en.wikipedia.org/wiki/Sierpinski_triangle
+
 可以了解一下Chaos game之类的实现方法
 
 

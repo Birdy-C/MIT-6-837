@@ -25,13 +25,14 @@ public:
 
 	//It takes as input the viewing ray, the Hit data structure, and light information and returns the color for that pixel. 
 	// dir may not be normaized for information of direction
-	virtual Vec3f Shade(const Ray &ray, const Hit &hit, const Vec3f &dirToLight, const Vec3f &lightColor) const = 0;
 
-	virtual void glSetMaterial(void) const = 0;
-	virtual Vec3f getSpecularColor() const = 0;
-	virtual Vec3f getRedlectiveColor() const = 0;
-	virtual Vec3f getTransparentColor() const = 0;
-	virtual float getIndexOfRef()const = 0;
+    // The following function should be pure virtual, but cause assignment1 need to instance Material class.
+    virtual Vec3f Shade(const Ray &ray, const Hit &hit, const Vec3f &dirToLight, const Vec3f &lightColor) const { assert(0); return Vec3f(0, 0, 0); };
+	virtual void glSetMaterial(void) const { assert(0); };
+	virtual Vec3f getSpecularColor() const { assert(0); return Vec3f(0, 0, 0); };
+	virtual Vec3f getRedlectiveColor() const { assert(0); return Vec3f(0, 0, 0); };
+	virtual Vec3f getTransparentColor() const { assert(0); return Vec3f(0, 0, 0); };
+	virtual float getIndexOfRef()const { assert(0); return 0.f; };
 };
 
 

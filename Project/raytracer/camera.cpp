@@ -45,6 +45,7 @@ OrthographicCamera::~OrthographicCamera()
 // point vary from (0,0) to (1,1)
 Ray OrthographicCamera::generateRay(Vec2f point)
 {
+    // TODO1
 	Vec3f pos = center + size*up*(point.x() - 0.5) + size*horizontal*(point.y() - 0.5);
 	return Ray(pos, direction);
 }
