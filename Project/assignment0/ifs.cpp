@@ -52,6 +52,7 @@ void IFS::readFile(char * file)
 
 void IFS::render(Image & img, int pointNum, int iter)
 {
+    // TODO0
 	Vec3f color(0, 0, 0);
 	int Width = img.Width();
 	int Height = img.Height();
@@ -72,6 +73,7 @@ void IFS::render(Image & img, int pointNum, int iter)
 			}
 			point *= m;
 		}
+        // clamp
 		int tx = min((int)(point.x()*Width), Width - 1);
 		int ty = min((int)(point.y()*Height), Height - 1);
 		tx = max(tx, 0);
