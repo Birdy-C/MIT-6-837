@@ -40,6 +40,7 @@ public:
   ~DirectionalLight() {}
 
   // VIRTUAL METHODS
+  // Assignment2
   void getIllumination(const Vec3f &p, Vec3f &dir, Vec3f &col) const {
       // the direction to the light is the opposite of the
       // direction of the directional light source

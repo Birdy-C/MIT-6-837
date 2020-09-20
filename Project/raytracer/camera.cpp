@@ -159,6 +159,7 @@ PerspectiveCamera::~PerspectiveCamera()
 
 Ray PerspectiveCamera::generateRay(Vec2f point)
 {
+    // TODO2
 	float m = 1.0 / tan(angle / 2);
 	float tanalpha = 1 / sqrt(m * m - 1);
 	Vec3f temp = direction + 2 * tanalpha * up * (point.x() - 0.5) + 2 * tanalpha * horizontal * (point.y() - 0.5);

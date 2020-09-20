@@ -78,6 +78,7 @@ int main(int argc, char *argv[])
 
 	// ========================================================
 	// ========================================================
+    // TODO2
 	SceneParser mainapp(input_file);
 	Image img(width, height);
 	Image depthimg(width, height);
@@ -112,9 +113,9 @@ int main(int argc, char *argv[])
 					else
 						LightAll += max(dir.Dot3(result.getNormal()), (float)0)*col;
 				}
-				img.SetPixel(height - j - 1, width - i - 1, (result.getMaterial())->getDiffuseColor()*LightAll);
-				depthimg.SetPixel(height - j - 1, width - i - 1, setcolor(depth_min, depth_max, result.getT()));
-				normalimg.SetPixel(height - j - 1, width - i - 1, Vec3f(abs(result.getNormal().x()), abs(result.getNormal().y()), abs(result.getNormal().z())));
+				img.SetPixel(height - j - 1, i, (result.getMaterial())->getDiffuseColor()*LightAll);
+				depthimg.SetPixel(height - j - 1, i, setcolor(depth_min, depth_max, result.getT()));
+				normalimg.SetPixel(height - j - 1, i, Vec3f(abs(result.getNormal().x()), abs(result.getNormal().y()), abs(result.getNormal().z())));
 			}
 		}
 	}
