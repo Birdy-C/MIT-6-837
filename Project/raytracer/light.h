@@ -85,6 +85,7 @@ public:
     ~PointLight() {}
 
     // VIRTUAL METHODS
+    void getIllumination(const Vec3f &p, Vec3f &dir, Vec3f &col) const { assert(0);}
     void getIllumination(const Vec3f &p, Vec3f &dir, Vec3f &col, float &distanceToLight) const {
         dir = position - p;
         // grab the length before the direction is normalized
@@ -92,7 +93,7 @@ public:
         dir.Normalize();
         float attenuation = 1 / (attenuation_1 +
             attenuation_2 * distanceToLight +
-            attenuation_3 * distanceToLight*distanceToLight);
+            attenuation_3 * distanceToLight * distanceToLight);
         if (attenuation < 0) attenuation = 0;
         col = color * attenuation;
     }
@@ -101,7 +102,7 @@ public:
 
 private:
 
-    PointLight(); // don't use
+    PointLight() {}; // don't use
 
     // REPRESENTATION
     Vec3f position;

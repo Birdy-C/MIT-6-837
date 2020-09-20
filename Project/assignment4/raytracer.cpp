@@ -14,6 +14,7 @@ const float EPSILON = 0.001;
 
 Vec3f mirrorDirection(const Vec3f &normal, const Vec3f &incoming)
 {
+    // TODO4
 	Vec3f normal_t = normal, incoming_t = incoming;
 	normal_t.Normalize();
 	incoming_t.Normalize();
@@ -24,6 +25,7 @@ Vec3f mirrorDirection(const Vec3f &normal, const Vec3f &incoming)
 bool transmittedDirection(const Vec3f &normal, const Vec3f &incoming,
 	float index_i, float index_t, Vec3f &transmitted)
 {
+    // TODO4
 	Vec3f normal_t = normal, incoming_t = incoming;
 	normal_t.Normalize();
 	incoming_t.Normalize();
@@ -70,7 +72,6 @@ Vec3f RayTracer::traceRay(Ray & ray, float tmin, int bounces, float weight, floa
 			RayTree::SetMainSegment(ray, 0, hit.getT());
 		assert(NULL != hit.getMaterial());
 		Vec3f Color;
-		//if (0 == bounces);
 		Color = mainapp->getAmbientLight()* hit.getMaterial()->getDiffuseColor(); // add Ambient Light Out the material
 
 		// Calculate direct light
@@ -108,7 +109,6 @@ Vec3f RayTracer::traceRay(Ray & ray, float tmin, int bounces, float weight, floa
 							getT = lightTestHit.getT();
 							if (lastColor == lightTestHit.getMaterial()->getTransparentColor())
 							{
-								//cout << getT - lastT << endl;
 								Vec3f mask_temp = Vec3f(1, 1, 1)*(1 - (getT - lastT)) + lightTestHit.getMaterial()->getTransparentColor()*(getT - lastT);//ÏßÐÔË¥¼õ
 								Vec3f::Mult(mask, mask, mask_temp);
 							}
@@ -124,7 +124,7 @@ Vec3f RayTracer::traceRay(Ray & ray, float tmin, int bounces, float weight, floa
 					RayTree::AddShadowSegment(lightTestRay, 0, 20);
 				}
 			}
-			Color += hit.getMaterial()->Shade(ray, hit, dirToLight, lightColor)* mask;
+			Color += hit.getMaterial()->Shade(ray, hit, dirToLight, lightColor) * mask;
 		}
 
 		// Calculate Reflection
@@ -132,7 +132,7 @@ Vec3f RayTracer::traceRay(Ray & ray, float tmin, int bounces, float weight, floa
 		{
 			Ray reflectRay(hit.getIntersectionPoint(), mirrorDirection(hit.getNormal(), ray.getDirection()));
 			Hit reflectHit;
-			Color += traceRay(reflectRay, EPSILON, bounces + 1, weight, indexOfRefraction, reflectHit)*hit.getMaterial()->getRedlectiveColor();
+			Color += traceRay(reflectRay, EPSILON, bounces + 1, weight, indexOfRefraction, reflectHit) * hit.getMaterial()->getRedlectiveColor();
 			RayTree::AddReflectedSegment(reflectRay, 0, reflectHit.getT());
 		}
 
@@ -152,9 +152,9 @@ Vec3f RayTracer::traceRay(Ray & ray, float tmin, int bounces, float weight, floa
 			if (check)
 			{
 				if (inside)
-					Color += traceRay(transRay, EPSILON, bounces + 1, weight, 1.0, transHit)*hit.getMaterial()->getTransparentColor();
+					Color += traceRay(transRay, EPSILON, bounces + 1, weight, 1.0, transHit) * hit.getMaterial()->getTransparentColor();
 				else
-					Color += traceRay(transRay, EPSILON, bounces + 1, weight, hit.getMaterial()->getIndexOfRef(), transHit)*hit.getMaterial()->getTransparentColor();
+					Color += traceRay(transRay, EPSILON, bounces + 1, weight, hit.getMaterial()->getIndexOfRef(), transHit) * hit.getMaterial()->getTransparentColor();
 
 				RayTree::AddTransmittedSegment(transRay, 0, transHit.getT());
 			}
@@ -167,5 +167,4 @@ Vec3f RayTracer::traceRay(Ray & ray, float tmin, int bounces, float weight, floa
 		// if no intersect, return the backgroug Color
 	}
 	return mainapp->getBackgroundColor();
-	//return Vec3f(0, 0, 0);
 }
