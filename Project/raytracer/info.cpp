@@ -12,3 +12,6 @@ int max_bounces = 0;
 float cutoff_weight = 0.01;
 bool shadows = false;
 bool useTransparentShadows = false;
+
+bool visualize_grid = false;
+

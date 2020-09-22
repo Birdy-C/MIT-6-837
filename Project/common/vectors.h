@@ -133,6 +133,7 @@ public:
 
   // CONSTRUCTORS & DESTRUCTOR
   Vec3f() { data[0] = data[1] = data[2] = 0; }
+  Vec3f(float d) { data[0] = data[1] = data[2] = d; }
   Vec3f(const Vec3f &V) {
     data[0] = V.data[0];
     data[1] = V.data[1];
@@ -180,6 +181,9 @@ public:
     data[0] /= d0;
     data[1] /= d1;
     data[2] /= d2; }
+  void Divide(Vec3f d) {
+      Divide(d.x(), d.y(), d.z());
+  }
   void Normalize() {
     float l = Length();
     if (l > 0) {

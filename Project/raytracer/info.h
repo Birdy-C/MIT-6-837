@@ -14,3 +14,6 @@ extern int max_bounces;
 extern float cutoff_weight;
 extern bool shadows;
 extern bool useTransparentShadows;
+
+// Assignment5
+extern bool visualize_grid;

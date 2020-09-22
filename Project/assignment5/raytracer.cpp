@@ -48,10 +48,11 @@ bool transmittedDirection(const Vec3f &normal, const Vec3f &incoming,
 
 }
 
-RayTracer::RayTracer()
+
+RayTracer::RayTracer(Grid * g)
+    :grid(g)
 {
 }
-
 
 RayTracer::~RayTracer()
 {
@@ -64,7 +65,13 @@ Vec3f RayTracer::traceRay(Ray & ray, float tmin, int bounces, float weight, floa
 		return Vec3f(0, 0, 0);
 	}
 
-	Group *itemAll = mainapp->getGroup();
+	Object3D *itemAll = mainapp->getGroup();
+    if (visualize_grid && grid)
+    {
+        itemAll = grid;
+        bounces = max_bounces;
+    }
+
 	if (itemAll->intersect(ray, hit, tmin))
 	{
 		if (bounces == 0)
