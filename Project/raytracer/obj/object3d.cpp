@@ -8,8 +8,6 @@ Object3D::Object3D()
 
 Object3D::~Object3D()
 {
-    if (itsboundingbox)
-        delete itsboundingbox;
 }
 
 void Object3D::glSetMaterial() const

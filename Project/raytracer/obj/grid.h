@@ -22,6 +22,12 @@ struct MarchingInfo
         // https://www.shadertoy.com/view/4dfGzs
         RayTracingStats::IncrementNumIntersections();
         Vec3f dire = Vec3f(dis.x() < min(dis.y(), dis.z()), dis.y() < min(dis.x(), dis.z()), dis.z() < min(dis.x(), dis.y()));
+        // Fix problem for parallel
+        if (dire.Length() < 0.001 || dire.Length() > 1.1)
+        {
+            dis += Vec3f(rand(), rand(), rand()) * 0.01 * Vec3f(abs(ri.x()) > 100, abs(ri.y()) > 100, abs(ri.z()) > 100);
+            dire = Vec3f(dis.x() < min(dis.y(), dis.z()), dis.y() < min(dis.x(), dis.z()), dis.z() < min(dis.x(), dis.y()));
+        }
         if (dire.Length() < 0.001 || dire.Length() > 1.1)
         {
             dis += Vec3f(rand(), rand(), rand()) * 0.01;
@@ -55,6 +61,7 @@ public:
     void setRecord(int x, int y, int z, Object3D* obj);
     Vec3f center(int x, int y, int z);
     bool intersect(const Ray &r, Hit &h, float tmin);
+    bool intersectReal(const Ray &r, Hit &h, float tmin);
     vector<Vec3f> getFace(int x, int y, int z, int type);
     Vec3f getNormal(int type);
     void paint(void);
@@ -74,5 +81,6 @@ private:
     Vec3f block;
 
     std::vector<Object3D*>* getRecord(int x, int y, int z);
+    bool checkinside(int x, int y, int z, Vec3f point);
 };
 

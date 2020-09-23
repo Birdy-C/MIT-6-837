@@ -2,6 +2,7 @@
 #include "grid.h"
 #include <algorithm>
 #include "rayTree.h"
+#include <set>
 
 Grid::Grid(BoundingBox *bb, int _nx, int _ny, int _nz)
     : nx(_nx), ny(_ny), nz(_nz)
@@ -38,6 +39,19 @@ std::vector<Object3D*>* Grid::getRecord(int x, int y, int z)
     return &record[x * (ny * nz) + y * nz + z];
 }
 
+bool Grid::checkinside(int x, int y, int z, Vec3f point)
+{
+    Vec3f t = Vec3f(x, y, z);
+    Vec3f minimum = itsboundingbox->getMin() + block * t;
+    Vec3f maximum = itsboundingbox->getMin() + block * (t + 1);
+    if (point.x() >= minimum.x() && point.y() >= minimum.y() && point.z() >= minimum.z() &&
+        point.x() <= maximum.x() && point.y() <= maximum.y() && point.z() <= maximum.z())
+    {
+        return true;
+    }
+    return false;
+}
+
 Vec3f Grid::center(int x, int y, int z)
 {
     return itsboundingbox->getMin() + (Vec3f(x, y, z) + 0.5) * block;  
@@ -46,7 +60,6 @@ Vec3f Grid::center(int x, int y, int z)
 
 bool Grid::intersect(const Ray & r, Hit & h, float tmin)
 {
-    // TODO add intersect
     MarchingInfo mi;
     initializeRayMarch(mi, r, tmin);
     int count = 2; // if outside of grid twice, abort
@@ -93,6 +106,51 @@ bool Grid::intersect(const Ray & r, Hit & h, float tmin)
     }
     return false;
 }
+
+
+bool Grid::intersectReal(const Ray & r, Hit & h, float tmin)
+{
+    MarchingInfo mi;
+    initializeRayMarch(mi, r, tmin);
+    int count = 2; // if outside of grid twice, abort
+    set<Object3D*> checked;
+    while (1)
+    {
+        std::vector<Object3D*>*  temp = getRecord(mi.i, mi.j, mi.k);
+        if (!temp)
+        {
+            count--;
+            if (count == 0)
+            {
+                return false;
+            }
+            else
+            {
+                mi.nextCell();
+                continue;
+            }
+        }
+        int size = temp->size();   
+        if (size > 0)
+        {
+            for (Object3D* obj : *temp)
+            {
+                if (checked.find(obj) != checked.end())
+                {
+                    obj->intersect(r, h, tmin);
+                    checked.insert(obj);
+                }
+            }
+            if (checkinside(mi.i, mi.j, mi.k, h.getIntersectionPoint()))
+            {
+                return true;
+            }
+        }
+        mi.nextCell();
+    }
+    return false;
+}
+
 
 vector<Vec3f> Grid::getFace(int x, int y, int z, int type)
 {

@@ -26,7 +26,7 @@ Transform::Transform(Matrix & m, Object3D * o)
 
 Transform::~Transform()
 {
-
+    delete itsboundingbox;
 }
 
 bool Transform::intersect(const Ray & r, Hit & h, float tmin)

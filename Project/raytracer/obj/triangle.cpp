@@ -17,8 +17,6 @@ Triangle::Triangle(Vec3f & ta, Vec3f & tb, Vec3f & tc, Material * m)
 	Vec3f::Cross3(normal, tb - ta, tc - tb);
 	normal.Normalize();
 
-    if (itsboundingbox)
-        delete itsboundingbox;
     itsboundingbox = new BoundingBox(ta, ta);
     itsboundingbox->Extend(tb);
     itsboundingbox->Extend(tc);
@@ -26,6 +24,7 @@ Triangle::Triangle(Vec3f & ta, Vec3f & tb, Vec3f & tc, Material * m)
 
 Triangle::~Triangle()
 {
+    delete itsboundingbox;
 }
 
 bool Triangle::intersect(const Ray & r, Hit & h, float tmin)

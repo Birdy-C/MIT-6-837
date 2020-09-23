@@ -8,6 +8,7 @@ class RayTracer
 public:
 	RayTracer(Grid *g);
 	~RayTracer();
+    bool RayCast(Object3D *obj, Ray & ray, Hit & hit, float tmin) const;
 	Vec3f traceRay(Ray &ray, float tmin, int bounces, float weight,
 		float indexOfRefraction, Hit &hit) const;
 

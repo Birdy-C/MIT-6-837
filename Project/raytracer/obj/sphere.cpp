@@ -7,13 +7,12 @@ const float PI = 3.1415926;
 Sphere::Sphere(Vec3f c, float r, Material* m) : center(c), radius(r)
 {
 	itsMaterial = m;
-    if (itsboundingbox)
-        delete itsboundingbox;
     itsboundingbox = new BoundingBox(c - Vec3f(r, r, r), c + Vec3f(r, r, r));
 }
 
 Sphere::~Sphere()
 {
+    delete itsboundingbox;
 }
 
 bool Sphere::intersect(const Ray & tr, Hit & h, float tmin)
@@ -62,8 +61,6 @@ void Sphere::paint(void)
 {
     // TODO3
 	glSetMaterial();
-	//float theta = 360.0 / theta_steps;
-	//float phi = 180.0 / phi_steps;
 	float theta = 2 * PI / theta_steps;
 	float phi = PI / phi_steps;
 
@@ -94,8 +91,6 @@ void Sphere::paint(void)
 				+ radius*cos(tphi)*cos(ttheta)*Vec3f(1, 0, 0) + radius*cos(tphi)*sin(ttheta)*Vec3f(0, 0, 1);
 		}
 	}
-
-
 
 	glBegin(GL_QUADS);
 	for (int iPhi = 0; iPhi < phi_steps; iPhi++)

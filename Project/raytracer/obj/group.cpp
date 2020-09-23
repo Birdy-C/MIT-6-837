@@ -15,6 +15,8 @@ Group::Group(int n)
 Group::~Group()
 {
 	delete[] objList;
+    if (itsboundingbox)
+        delete itsboundingbox;
 }
 
 void Group::addObject(int index, Object3D * obj)

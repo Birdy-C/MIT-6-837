@@ -59,6 +59,15 @@ RayTracer::~RayTracer()
 {
 }
 
+bool RayTracer::RayCast(Object3D * obj, Ray & ray, Hit & hit, float tmin) const
+{
+    if (visualize_grid || !grid)
+    {
+        return obj->intersect(ray, hit, tmin);
+    }
+    return grid->intersectReal(ray, hit, tmin);
+}
+
 Vec3f RayTracer::traceRay(Ray & ray, float tmin, int bounces, float weight, float indexOfRefraction, Hit & hit) const
 {
 	if (bounces > max_bounces)
@@ -74,7 +83,7 @@ Vec3f RayTracer::traceRay(Ray & ray, float tmin, int bounces, float weight, floa
     }
 
     RayTracingStats::IncrementNumNonShadowRays();
-	if (itemAll->intersect(ray, hit, tmin))
+	if (RayCast(itemAll, ray, hit, tmin))
 	{
 		if (bounces == 0)
 			RayTree::SetMainSegment(ray, 0, hit.getT());
@@ -98,7 +107,7 @@ Vec3f RayTracer::traceRay(Ray & ray, float tmin, int bounces, float weight, floa
                 RayTracingStats::IncrementNumShadowRays();
 				Ray lightTestRay(hit.getIntersectionPoint(), dirToLight);
 				Hit lightTestHit;
-				if (itemAll->intersect(lightTestRay, lightTestHit, EPSILON))
+				if (RayCast(itemAll, lightTestRay, lightTestHit, EPSILON))
 				{
 					float getT = lightTestHit.getT();
 					if (getT < distance)
