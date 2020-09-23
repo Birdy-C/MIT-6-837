@@ -43,17 +43,26 @@ I plan to put all the home work into one solution. I plan to leave some blank th
 
 Now I only finish the first five project. It's temporary in [**My Result**](My Result) now.
 
->  Visual studio 2017
->
->  配置属性-调试-命令参数
->
->  Add glut32.dll to execute folder (start from assignment3)
->
->  If a function has assert(0) - this function should be pure virtual, but cause in previous assignment need to instance such abstract class, I leave it this way.
->
->  Rebuild the project when change startup project (this is a bad design in the code, I generate the mid result in same folder)
+### Setup
 
+- 常规-C/C++-附加包含库目录
+  - **StaticLib**: "..\staticlib;"
+  - **StaticLib_raytracer**: "..\common;..\raytracer\obj;..\raytracer;..\staticlib"
+  - **assignment**: "..\common;..\raytracer;..\raytracer\obj;"
+- Then you will get pch file missing error (if expected)
+  - **StaticLib** & **StaticLib_raytracer**: Properties - C/C++ - precompiled header file - Precompiled Header: Select Use (/Yu)
+  - **StaticLib** & **StaticLib_raytracer**: 配置属性 - C/C++ - 预编译头：创建（/Yu）
+- Add lib
+  - **assignment**: 配置属性 - VC++ 目录 - 库目录 - "..\lib;"
+  - 链接器 - 输入 - 附加依赖项 - glut32.lib
+- 修改项目属性 - 调试 - 工作路径 “$(ProjectDir)..\assignment0”
+- Add glut32.dll to execute folder (start from assignment3)
 
+### Execute
+
+- 修改 配置属性-调试-命令参数
+- If a function has assert(0) - this function should be pure virtual, but cause in previous assignment need to instance such abstract class, I leave it this way.
+- Rebuild the project when change startup project (this is a bad design in the code, I generate the mid result in same folder)
 
 ## Other Resources
 

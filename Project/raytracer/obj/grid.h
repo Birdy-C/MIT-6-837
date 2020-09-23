@@ -3,7 +3,6 @@
 #include "boundingbox.h"
 #include <vector>
 #include <algorithm>
-#include <optional>
 // TODO5
 
 // store the information for the current ray and the current grid cell
