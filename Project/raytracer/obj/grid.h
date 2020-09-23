@@ -3,6 +3,8 @@
 #include "boundingbox.h"
 #include <vector>
 #include <algorithm>
+#include "raytracing_stats.h"
+
 // TODO5
 
 // store the information for the current ray and the current grid cell
@@ -18,6 +20,7 @@ struct MarchingInfo
     bool sign_x, sign_y, sign_z;
     void nextCell() {
         // https://www.shadertoy.com/view/4dfGzs
+        RayTracingStats::IncrementNumIntersections();
         Vec3f dire = Vec3f(dis.x() < min(dis.y(), dis.z()), dis.y() < min(dis.x(), dis.z()), dis.z() < min(dis.x(), dis.y()));
         if (dire.Length() < 0.001 || dire.Length() > 1.1)
         {

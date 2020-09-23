@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "plane.h"
-
+#include "raytracing_stats.h"
 const int INF = 100000;
 
 Plane::Plane(Vec3f & tnormal, float td, Material * m)
@@ -18,6 +18,7 @@ Plane::~Plane()
 
 bool Plane::intersect(const Ray & r, Hit & h, float tmin)
 {
+    RayTracingStats::IncrementNumIntersections();
     //TODO2
 	float t = -(-d + normal.Dot3(r.getOrigin())) / normal.Dot3(r.getDirection());
 	if (t > tmin && t < h.getT())

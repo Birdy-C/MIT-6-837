@@ -37,8 +37,7 @@ public:
 };
 
 
-class PhongMaterial :
-	public Material
+class PhongMaterial : public Material
 {
 	Vec3f specularColor, reflectiveColor, transparentColor;
 	float exponent, indexOfRefraction;
@@ -52,6 +51,31 @@ public:
 	Vec3f getRedlectiveColor() const { return reflectiveColor; }
 	Vec3f getTransparentColor() const { return transparentColor; }
 	float getIndexOfRef()const { return indexOfRefraction; }
+};
+
+class Checkerboard : public Material
+{
+public:
+    Checkerboard(Matrix *m, Material *mat1, Material *mat2) : Material(Vec3f(1)) {};
+};
+
+class Noise : public Material
+{
+public:
+    Noise(Matrix *m, Material *mat1, Material *mat2, int octaves) : Material(Vec3f(1)) {};
+};
+
+class Marble : public Material
+{
+public:
+    Marble(Matrix *m, Material *mat1, Material *mat2, int octaves, float frequency, float amplitude) : Material(Vec3f(1)) {};
+};
+
+
+class Wood : public Material
+{
+public:
+    Wood(Matrix *m, Material *mat1, Material *mat2, int octaves, float frequency, float amplitude) : Material(Vec3f(1)) {};
 };
 
 #endif

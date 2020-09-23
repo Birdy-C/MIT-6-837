@@ -18,6 +18,8 @@ Sphere::~Sphere()
 
 bool Sphere::intersect(const Ray & tr, Hit & h, float tmin)
 {
+    RayTracingStats::IncrementNumIntersections();
+
     //TODO1
 	Vec3f normdir = tr.getDirection();
 	float length = tr.getDirection().Length();
@@ -122,7 +124,6 @@ void Sphere::paint(void)
 				glNormal3f(normal.x(), normal.y(), normal.z());
 
 				glVertex3f(points[index[i]].x(), points[index[i]].y(), points[index[i]].z());
-
 			}
 		}
 	}

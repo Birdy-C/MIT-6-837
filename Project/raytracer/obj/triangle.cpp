@@ -4,6 +4,7 @@
 #include "vectors.h"
 #include "grid.h"
 #include <algorithm>
+#include "raytracing_stats.h"
 
 float det3x3(float a1, float a2, float a3,
 	float b1, float b2, float b3,
@@ -29,6 +30,8 @@ Triangle::~Triangle()
 
 bool Triangle::intersect(const Ray & r, Hit & h, float tmin)
 {
+    RayTracingStats::IncrementNumIntersections();
+
     // TODO2
 	float belta, gamma, t;
 	float A;

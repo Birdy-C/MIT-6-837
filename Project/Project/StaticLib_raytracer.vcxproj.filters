@@ -60,6 +60,9 @@
     <ClCompile Include="..\raytracer\obj\grid.cpp">
       <Filter>源文件\obj</Filter>
     </ClCompile>
+    <ClCompile Include="..\raytracer\raytracing_stats.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\raytracer\hit.h">
@@ -106,6 +109,9 @@
     </ClInclude>
     <ClInclude Include="..\raytracer\obj\grid.h">
       <Filter>头文件\obj</Filter>
+    </ClInclude>
+    <ClInclude Include="..\raytracer\raytracing_stats.h">
+      <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
