@@ -134,7 +134,8 @@ Vec3f RayTracer::traceRay(Ray & ray, float tmin, int bounces, float weight, floa
 							lightTestHit.initialize();
 							lastT = getT;
 							lastColor = lightTestHit.getMaterial()->getTransparentColor();
-						} while (itemAll->intersect(lightTestRay, lightTestHit, getT + EPSILON));
+						} while 
+                            (RayCast(itemAll, lightTestRay, lightTestHit, getT + EPSILON));
 					}
 				}
 				else

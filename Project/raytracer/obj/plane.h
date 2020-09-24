@@ -13,5 +13,6 @@ public:
 	~Plane();
 	virtual bool intersect(const Ray &r, Hit &h, float tmin);
 	void paint(void);
+    void insertIntoGrid(Grid *g, Matrix *m);
 };
 

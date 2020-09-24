@@ -110,13 +110,17 @@ bool Grid::intersect(const Ray & r, Hit & h, float tmin)
 
 bool Grid::intersectReal(const Ray & r, Hit & h, float tmin)
 {
+    for (Object3D* obj : infinite_record)
+    {
+        obj->intersect(r, h, tmin);
+    }
     MarchingInfo mi;
     initializeRayMarch(mi, r, tmin);
     int count = 2; // if outside of grid twice, abort
     set<Object3D*> checked;
     while (1)
     {
-        std::vector<Object3D*>*  temp = getRecord(mi.i, mi.j, mi.k);
+        std::vector<Object3D*>* temp = getRecord(mi.i, mi.j, mi.k);
         if (!temp)
         {
             count--;
@@ -135,10 +139,14 @@ bool Grid::intersectReal(const Ray & r, Hit & h, float tmin)
         {
             for (Object3D* obj : *temp)
             {
-                if (checked.find(obj) != checked.end())
+                if (checked.find(obj) == checked.end())
                 {
                     obj->intersect(r, h, tmin);
                     checked.insert(obj);
+                }
+                else
+                {
+                    cout << "repeated" << endl;
                 }
             }
             if (checkinside(mi.i, mi.j, mi.k, h.getIntersectionPoint()))
@@ -274,6 +282,11 @@ void Grid::initializeRayMarch(MarchingInfo & mi, const Ray & r, float tmin) cons
         mi.nor = normal;
     }
     mi.updateijk();
+}
+
+void Grid::insertInfinite(Object3D * obj)
+{
+    infinite_record.push_back(obj);
 }
 
 void Grid::setRecord(int x, int y, int z, Object3D* obj)

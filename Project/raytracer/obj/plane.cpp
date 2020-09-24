@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "plane.h"
 #include "raytracing_stats.h"
+#include <grid.h>
 const int INF = 100000;
 
 Plane::Plane(Vec3f & tnormal, float td, Material * m)
@@ -60,4 +61,9 @@ void Plane::paint(void)
 		glVertex3f(vex[i].x(), vex[i].y(), vex[i].z());
 	}
 	glEnd();
+}
+
+void Plane::insertIntoGrid(Grid * g, Matrix * m)
+{
+    g->insertInfinite(this);
 }

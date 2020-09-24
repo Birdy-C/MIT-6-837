@@ -66,7 +66,6 @@ void render(void)
 			img.SetPixel(height - j - 1, i, Color);
 			depthimg.SetPixel(height - j - 1, i, setcolor(depth_min, depth_max, hit_result.getT()));
 			normalimg.SetPixel(height - j - 1, i, Vec3f(abs(hit_result.getNormal().x()), abs(hit_result.getNormal().y()), abs(hit_result.getNormal().z())));
-
 		}
 	}
 	if (output_file)
