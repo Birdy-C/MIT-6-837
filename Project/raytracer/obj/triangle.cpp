@@ -86,6 +86,7 @@ void Triangle::paint(void)
 
 void Triangle::insertIntoGrid(Grid * g, Matrix * m)
 {
+    g->insertMatrix(this, m);
     Vec3f vec[3];
     vec[0] = a;
     vec[1] = b;

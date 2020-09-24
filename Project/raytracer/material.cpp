@@ -11,6 +11,8 @@
 //#include "glCanvas.h"  
 #include "info.h"
 #include <gl/glut.h>
+#include "matrix.h"
+#include "perlin_noise.h"
 
 #ifdef SPECULAR_FIX
 // OPTIONAL:  global variable allows (hacky) communication 
@@ -154,4 +156,66 @@ void PhongMaterial::glSetMaterial(void) const
 	}
 
 #endif
+}
+
+Vec3f Checkerboard::Shade(const Ray & ray, const Hit & hit, const Vec3f & dirToLight, const Vec3f & lightColor) const
+{
+    Vec3f intersection = hit.getIntersectionPoint();
+    mat->Transform(intersection);
+    bool whichmaterial = int(round(intersection[0]) + round(intersection[1]) + round(intersection[2])) & 1;
+    if (whichmaterial)
+    {
+        return material1->Shade(ray, hit, dirToLight, lightColor);
+    }
+    else
+    {
+        return material2->Shade(ray, hit, dirToLight, lightColor);
+    }
+    return Vec3f();
+}
+
+void Checkerboard::glSetMaterial(void) const
+{
+    material1->glSetMaterial();
+}
+
+float Noise::NoiseCalculate(Vec3f intersection, int octaves)
+{
+    float c = 0;
+    float times = 1.0;
+    for (int i = 0; i < octaves; i++)
+    {
+        c += PerlinNoise::noise(intersection.x(), intersection.y(), intersection.z()) * times;
+        times /= 2.0;
+        intersection *= 2.0f;
+    }
+    return c;
+}
+Vec3f Noise::Shade(const Ray & ray, const Hit & hit, const Vec3f & dirToLight, const Vec3f & lightColor) const
+{
+    Vec3f intersection = hit.getIntersectionPoint();
+    mat->Transform(intersection);
+    float c = Noise::NoiseCalculate(intersection, octaves);
+    Vec3f color1 = material1->Shade(ray, hit, dirToLight, lightColor);
+    Vec3f color2 = material2->Shade(ray, hit, dirToLight, lightColor);
+    return color1 * (1 - c) + color2 * c;
+}
+
+void Noise::glSetMaterial(void) const
+{
+    material1->glSetMaterial();
+}
+
+Vec3f Marble::Shade(const Ray & ray, const Hit & hit, const Vec3f & dirToLight, const Vec3f & lightColor) const
+{
+    Vec3f intersection = hit.getIntersectionPoint();
+    float c = sin(frequency * intersection.x() + amplitude * Noise::NoiseCalculate(intersection, octaves));
+    Vec3f color1 = material1->Shade(ray, hit, dirToLight, lightColor);
+    Vec3f color2 = material2->Shade(ray, hit, dirToLight, lightColor);
+    return color1 * ( 1 - c) + color2 * c;
+}
+
+void Marble::glSetMaterial(void) const
+{
+    material1->glSetMaterial();
 }

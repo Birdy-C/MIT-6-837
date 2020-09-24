@@ -3,6 +3,7 @@
 #include <algorithm>
 #include "rayTree.h"
 #include <set>
+#include <map>
 
 Grid::Grid(BoundingBox *bb, int _nx, int _ny, int _nz)
     : nx(_nx), ny(_ny), nz(_nz)
@@ -50,6 +51,18 @@ bool Grid::checkinside(int x, int y, int z, Vec3f point)
         return true;
     }
     return false;
+}
+
+bool Grid::checkintersect(Object3D *obj, const Ray & r, Hit & h, float tmin)
+{
+    if (matrixrecord.find(obj) == matrixrecord.end())
+    {
+        return obj->intersect(r, h, tmin);
+    }
+    else
+    {
+        return Transform::intersectWarp(obj, matrixrecord[obj], r, h, tmin);
+    }
 }
 
 Vec3f Grid::center(int x, int y, int z)
@@ -110,9 +123,10 @@ bool Grid::intersect(const Ray & r, Hit & h, float tmin)
 
 bool Grid::intersectReal(const Ray & r, Hit & h, float tmin)
 {
+    bool result = false;
     for (Object3D* obj : infinite_record)
     {
-        obj->intersect(r, h, tmin);
+        result = checkintersect(obj, r, h, tmin);
     }
     MarchingInfo mi;
     initializeRayMarch(mi, r, tmin);
@@ -126,7 +140,7 @@ bool Grid::intersectReal(const Ray & r, Hit & h, float tmin)
             count--;
             if (count == 0)
             {
-                return false;
+                return result;
             }
             else
             {
@@ -141,12 +155,8 @@ bool Grid::intersectReal(const Ray & r, Hit & h, float tmin)
             {
                 if (checked.find(obj) == checked.end())
                 {
-                    obj->intersect(r, h, tmin);
+                    checkintersect(obj, r, h, tmin);
                     checked.insert(obj);
-                }
-                else
-                {
-                    cout << "repeated" << endl;
                 }
             }
             if (checkinside(mi.i, mi.j, mi.k, h.getIntersectionPoint()))
@@ -156,7 +166,24 @@ bool Grid::intersectReal(const Ray & r, Hit & h, float tmin)
         }
         mi.nextCell();
     }
-    return false;
+    return result;
+}
+
+void Grid::insertMatrix(Object3D * obj, Matrix * mat)
+{
+    if (matrixrecord.find(obj) == matrixrecord.end())
+    {
+        if (mat)
+        {
+            matrixrecord[obj] = *mat;
+        }
+        else
+        {
+            Matrix Identity;
+            Identity.SetToIdentity();
+            matrixrecord[obj] = Identity;
+        }
+    }
 }
 
 

@@ -4,6 +4,8 @@
 #include <vector>
 #include <algorithm>
 #include "raytracing_stats.h"
+#include <map>
+#include "transform.h"
 
 // TODO5
 
@@ -25,12 +27,12 @@ struct MarchingInfo
         // Fix problem for parallel
         if (dire.Length() < 0.001 || dire.Length() > 1.1)
         {
-            dis += Vec3f(rand(), rand(), rand()) * 0.01 * Vec3f(abs(ri.x()) > 100, abs(ri.y()) > 100, abs(ri.z()) > 100);
+            dis -= Vec3f(rand(), rand(), rand()) * 0.001 * Vec3f(abs(ri.x()) < 100, abs(ri.y()) < 100, abs(ri.z()) < 100);
             dire = Vec3f(dis.x() < min(dis.y(), dis.z()), dis.y() < min(dis.x(), dis.z()), dis.z() < min(dis.x(), dis.y()));
         }
         if (dire.Length() < 0.001 || dire.Length() > 1.1)
         {
-            dis += Vec3f(rand(), rand(), rand()) * 0.01;
+            dis += Vec3f(rand(), rand(), rand()) * 0.001;
             dire = Vec3f(dis.x() < min(dis.y(), dis.z()), dis.y() < min(dis.x(), dis.z()), dis.z() < min(dis.x(), dis.y()));
         }
         nor = dire * rs * (-1);
@@ -63,6 +65,7 @@ public:
     Vec3f center(int x, int y, int z);
     bool intersect(const Ray &r, Hit &h, float tmin);
     bool intersectReal(const Ray &r, Hit &h, float tmin);
+    void insertMatrix(Object3D* obj, Matrix * mat);
     vector<Vec3f> getFace(int x, int y, int z, int type);
     Vec3f getNormal(int type);
     void paint(void);
@@ -76,6 +79,7 @@ public:
     };
 private:
 
+    std::map<Object3D*, Matrix> matrixrecord;
     void drawface(int i, int j, int k, int type);
     std::vector<std::vector<Object3D*>> record;
     std::vector<Object3D*> infinite_record;
@@ -85,5 +89,6 @@ private:
 
     std::vector<Object3D*>* getRecord(int x, int y, int z);
     bool checkinside(int x, int y, int z, Vec3f point);
+    bool checkintersect(Object3D * obj, const Ray & r, Hit & h, float tmin);
 };
 

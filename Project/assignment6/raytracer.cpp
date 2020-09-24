@@ -87,7 +87,10 @@ Vec3f RayTracer::traceRay(Ray & ray, float tmin, int bounces, float weight, floa
 	{
 		if (bounces == 0)
 			RayTree::SetMainSegment(ray, 0, hit.getT());
-		assert(NULL != hit.getMaterial());
+        if (NULL == hit.getMaterial())
+        {
+            return mainapp->getBackgroundColor();
+        };
 		Vec3f Color;
 		Color = mainapp->getAmbientLight()* hit.getMaterial()->getDiffuseColor(); // add Ambient Light Out the material
 

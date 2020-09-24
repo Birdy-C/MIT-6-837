@@ -70,7 +70,7 @@ Group {
         obj_file vase.obj
     }
 
-    MaterialIndex 5
+    MaterialIndex 3
     Plane {
 	normal 0 1 0
         offset -0.02

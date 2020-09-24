@@ -63,6 +63,9 @@
     <ClCompile Include="..\raytracer\raytracing_stats.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="..\raytracer\perlin_noise.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\raytracer\hit.h">
@@ -111,6 +114,9 @@
       <Filter>头文件\obj</Filter>
     </ClInclude>
     <ClInclude Include="..\raytracer\raytracing_stats.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\raytracer\perlin_noise.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

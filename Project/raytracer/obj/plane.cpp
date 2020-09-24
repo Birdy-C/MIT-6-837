@@ -65,5 +65,6 @@ void Plane::paint(void)
 
 void Plane::insertIntoGrid(Grid * g, Matrix * m)
 {
+    g->insertMatrix(this, m);
     g->insertInfinite(this);
 }

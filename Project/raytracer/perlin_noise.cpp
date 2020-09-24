@@ -2,6 +2,7 @@
 // http://mrl.nyu.edu/~perlin/noise/
 // translated to C++ for 6.837
 
+#include "stdafx.h"
 #include "perlin_noise.h"
 
 // permutation

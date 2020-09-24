@@ -130,6 +130,7 @@ void Sphere::insertIntoGrid(Grid * g, Matrix * m)
 {
     // TODO5
     glSetMaterial();
+    g->insertMatrix(this, m);
 
     for (int i = 0; i < g->nx; i++)
     {

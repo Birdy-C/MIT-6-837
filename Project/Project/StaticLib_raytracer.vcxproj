@@ -31,6 +31,7 @@
     <ClCompile Include="..\raytracer\obj\sphere.cpp" />
     <ClCompile Include="..\raytracer\obj\transform.cpp" />
     <ClCompile Include="..\raytracer\obj\triangle.cpp" />
+    <ClCompile Include="..\raytracer\perlin_noise.cpp" />
     <ClCompile Include="..\raytracer\raytracing_stats.cpp" />
     <ClCompile Include="..\raytracer\rayTree.cpp" />
   </ItemGroup>
@@ -48,6 +49,7 @@
     <ClInclude Include="..\raytracer\obj\sphere.h" />
     <ClInclude Include="..\raytracer\obj\transform.h" />
     <ClInclude Include="..\raytracer\obj\triangle.h" />
+    <ClInclude Include="..\raytracer\perlin_noise.h" />
     <ClInclude Include="..\raytracer\ray.h" />
     <ClInclude Include="..\raytracer\raytracing_stats.h" />
     <ClInclude Include="..\raytracer\rayTree.h" />
