@@ -26,6 +26,17 @@
       <Project>{82e7dcab-dec1-4d3e-be6f-b8ad0d7c53c6}</Project>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\assignment7\glCanvas.cpp" />
+    <ClCompile Include="..\assignment7\main.cpp" />
+    <ClCompile Include="..\assignment7\raytracer.cpp" />
+    <ClCompile Include="..\assignment7\scene_parser.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\assignment7\glCanvas.h" />
+    <ClInclude Include="..\assignment7\raytracer.h" />
+    <ClInclude Include="..\assignment7\scene_parser.h" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{5E0CC05B-2373-45C4-9A0E-F1245193E401}</ProjectGuid>
     <RootNamespace>assignment0</RootNamespace>

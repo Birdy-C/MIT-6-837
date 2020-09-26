@@ -21,6 +21,8 @@
   <ItemGroup>
     <ClCompile Include="..\raytracer\boundingbox.cpp" />
     <ClCompile Include="..\raytracer\camera.cpp" />
+    <ClCompile Include="..\raytracer\film.cpp" />
+    <ClCompile Include="..\raytracer\filter.cpp" />
     <ClCompile Include="..\raytracer\info.cpp" />
     <ClCompile Include="..\raytracer\light.cpp" />
     <ClCompile Include="..\raytracer\material.cpp" />
@@ -34,10 +36,13 @@
     <ClCompile Include="..\raytracer\perlin_noise.cpp" />
     <ClCompile Include="..\raytracer\raytracing_stats.cpp" />
     <ClCompile Include="..\raytracer\rayTree.cpp" />
+    <ClCompile Include="..\raytracer\sampler.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\raytracer\boundingbox.h" />
     <ClInclude Include="..\raytracer\camera.h" />
+    <ClInclude Include="..\raytracer\film.h" />
+    <ClInclude Include="..\raytracer\filter.h" />
     <ClInclude Include="..\raytracer\hit.h" />
     <ClInclude Include="..\raytracer\info.h" />
     <ClInclude Include="..\raytracer\light.h" />
@@ -53,6 +58,8 @@
     <ClInclude Include="..\raytracer\ray.h" />
     <ClInclude Include="..\raytracer\raytracing_stats.h" />
     <ClInclude Include="..\raytracer\rayTree.h" />
+    <ClInclude Include="..\raytracer\sample.h" />
+    <ClInclude Include="..\raytracer\sampler.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>

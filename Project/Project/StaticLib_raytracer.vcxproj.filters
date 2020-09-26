@@ -66,6 +66,15 @@
     <ClCompile Include="..\raytracer\perlin_noise.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="..\raytracer\sampler.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\raytracer\filter.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\raytracer\film.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\raytracer\hit.h">
@@ -117,6 +126,18 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="..\raytracer\perlin_noise.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\raytracer\sample.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\raytracer\sampler.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\raytracer\filter.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\raytracer\film.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

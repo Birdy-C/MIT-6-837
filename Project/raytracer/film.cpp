@@ -1,3 +1,4 @@
+#include "stdafx.h"
 #include "film.h"
 #include "image.h"
 #include "filter.h"
