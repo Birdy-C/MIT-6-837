@@ -1,12 +1,11 @@
 // Included files for OpenGL Rendering
-#include <GL/gl.h>
-#include <GL/glut.h>
-
 #include "glCanvas.h"
 #include "arg_parser.h"
 #include "spline.h"
 #include "spline_parser.h"
 
+#include <GL/glut.h>
+#include <GL/gl.h>
 // ========================================================
 
 // STATIC VARIABLES

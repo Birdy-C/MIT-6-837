@@ -17,4 +17,13 @@
   - (2) visualizing the cells traversed while walking along the ray
   - (3) the faces crossed to enter each cell along the ray.
 
+  
+
+---
+
+## Assignment 8
+
+- left mouse button - move a control point 
+- middle mouse button - adds a control point on an edge  
+- right mouse button - deletes a control point
 

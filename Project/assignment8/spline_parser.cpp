@@ -1,3 +1,4 @@
+#define _CRT_SECURE_NO_WARNINGS
 #include "spline_parser.h"
 #include "spline.h"
 #include "curve.h"
@@ -20,7 +21,7 @@ SplineParser::SplineParser(const char *spline_file) {
   getToken(token);
   assert (!strcmp(token,"num_splines"));
   num_splines = readInt();
-  splines = new (Spline*)[num_splines];
+  splines = new Spline*[num_splines];
 
   // read the splines
   for (int i = 0; i < num_splines; i++) {

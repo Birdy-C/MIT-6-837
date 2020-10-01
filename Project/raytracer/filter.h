@@ -5,6 +5,7 @@
 #include "sample.h"
 #include "film.h"
 
+// TODO7
 class Filter {
 public:
     // returns the weight for point (x + pixel center, y + pixel center)
