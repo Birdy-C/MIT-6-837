@@ -52,11 +52,9 @@ void render(void)
 	Image img(width, height);
 	Image depthimg(width, height);
 	Image normalimg(width, height);
-	//canvas.initialize(&mainapp,);// TODO add init
-	//Ĭ�ϰ׵׺�ͼ
+
 	img.SetAllPixels(mainapp->getBackgroundColor());
 	depthimg.SetAllPixels(Vec3f(0, 0, 0));
-	//Group *itemAll = mainapp->getGroup();
 
 	Camera *cameraAll = mainapp->getCamera();
 	RayTracer raytracer(maingrid);
@@ -91,9 +89,7 @@ void render(void)
     if (tracer_status)
         RayTracingStats::PrintStatistics();
     if (sample_file)
-    {
         film.renderSamples(sample_file, sample_zoom);
-    }
 }
 
 void traceRay(float x, float y)
@@ -196,8 +192,18 @@ int main(int argc, char *argv[])
         }
         else if (!strcmp(argv[i], "-random_samples")) {
             i++; assert(i < argc);
-            sampler = new RandomSampler(); 
             num_samples = atof(argv[i]);
+            sampler = new RandomSampler(); 
+        }
+        else if (!strcmp(argv[i], "-uniform_samples")) {
+            i++; assert(i < argc);
+            num_samples = atof(argv[i]);
+            sampler = new UniformSampler(num_samples);
+        }
+        else if (!strcmp(argv[i], "-jittered_samples")) {
+            i++; assert(i < argc);
+            num_samples = atof(argv[i]);
+            sampler = new JitteredSampler(num_samples);
         }
 		else {
 			printf("whoops error with command line argument %d: '%s'\n", i, argv[i]);
