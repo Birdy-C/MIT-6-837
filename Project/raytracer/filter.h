@@ -11,33 +11,39 @@ public:
     virtual float getWeight(float x, float y) = 0;
 
     // computes the appropriately filtered color for pixel (i,j) from the samples stored in the Film instance
-    Vec3f getColor(int i, int j, Film *film) {};
-
+    Vec3f getColor(int i, int j, Film *film);
     virtual int getSupportRadius() = 0;
 };
 
 class BoxFilter:
     public Filter
 {
+    float radius;
 public:
-    float getWeight(float x, float y) { return 0.f; };
-    int getSupportRadius() { return 1; };
+    BoxFilter(float _radius) : radius(_radius) {};
+    float getWeight(float x, float y);
+    int getSupportRadius() { return ceil(radius); };
 };
 
 class TentFilter : 
     public Filter
 {
+    float radius;
 public:
-    float getWeight(float x, float y) { return 0.f; };
-    int getSupportRadius() { return 1; };
+    TentFilter(float _radius) : radius(_radius) {};
+    float getWeight(float x, float y);
+    int getSupportRadius() { return ceil(radius); };
 };
 
 class GaussianFilter :
     public Filter
 {
+    float radius;
+    float sigma;
 public:
-    float getWeight(float x, float y) { return 0.f; };
-    int getSupportRadius() { return 1; };
+    GaussianFilter(float _sigma) : radius(2 * _sigma), sigma(_sigma) {};
+    float getWeight(float x, float y);
+    int getSupportRadius() { return ceil(radius); };
 };
 
 // ==================================================================

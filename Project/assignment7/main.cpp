@@ -19,6 +19,7 @@
 #include "raytracing_stats.h"
 #include "film.h"
 #include "sampler.h"
+#include "filter.h"
 
 Vec3f setcolor(int depth_min, int depth_max, float depth)
 {
@@ -39,10 +40,15 @@ bool gui = false;
 GLCanvas canvas;
 bool tracer_status = false;
 int nx = 1, ny = 1, nz = 1;
+
+Sampler *sampler = NULL;
 char *sample_file = NULL;
 int sample_zoom = 20;
 int num_samples = 1;
-Sampler *sampler = NULL;
+
+Filter *filter = NULL;
+char *filter_file = NULL;
+int filter_zoom = 1;
 
 void render(void)
 {
@@ -74,12 +80,16 @@ void render(void)
                 Vec3f Color = raytracer.traceRay(rayTemp, cameraAll->getTMin(), 0, 0, 1, hit_result);
 
                 film.setSample(i, j, u, offset, Color);
-                img.SetPixel(height - j - 1, i, Color);
-                depthimg.SetPixel(height - j - 1, i, setcolor(depth_min, depth_max, hit_result.getT()));
-                normalimg.SetPixel(height - j - 1, i, Vec3f(abs(hit_result.getNormal().x()), abs(hit_result.getNormal().y()), abs(hit_result.getNormal().z())));
             }
         }
 	}
+    for (int i = 0; i < width; i++)
+    {
+        for (int j = 0; j < height; j++)
+        {
+            img.SetPixel(height - j - 1, i, filter->getColor(i, j, &film));
+        }
+    }
 	if (output_file)
 		img.SaveTGA(output_file);
 	if (depth_file)
@@ -90,6 +100,8 @@ void render(void)
         RayTracingStats::PrintStatistics();
     if (sample_file)
         film.renderSamples(sample_file, sample_zoom);
+    if (filter_file)
+        film.renderFilter(filter_file, filter_zoom, filter);
 }
 
 void traceRay(float x, float y)
@@ -188,28 +200,54 @@ int main(int argc, char *argv[])
             i++; assert(i < argc);
             sample_file = argv[i];
             i++; assert(i < argc);
-            sample_zoom = atof(argv[i]);
+            sample_zoom = atoi(argv[i]);
         }
         else if (!strcmp(argv[i], "-random_samples")) {
             i++; assert(i < argc);
-            num_samples = atof(argv[i]);
+            num_samples = atoi(argv[i]);
             sampler = new RandomSampler(); 
         }
         else if (!strcmp(argv[i], "-uniform_samples")) {
             i++; assert(i < argc);
-            num_samples = atof(argv[i]);
+            num_samples = atoi(argv[i]);
             sampler = new UniformSampler(num_samples);
         }
         else if (!strcmp(argv[i], "-jittered_samples")) {
             i++; assert(i < argc);
-            num_samples = atof(argv[i]);
+            num_samples = atoi(argv[i]);
             sampler = new JitteredSampler(num_samples);
+        }
+        else if (!strcmp(argv[i], "-render_filter")) {
+
+            i++; assert(i < argc);
+            filter_file = argv[i];
+            i++; assert(i < argc);
+            filter_zoom = atoi(argv[i]);
+        }
+        else if (!strcmp(argv[i], "-box_filter")) {
+            i++; assert(i < argc);
+            float r = atof(argv[i]);
+            filter = new BoxFilter(r);
+        }
+        else if (!strcmp(argv[i], "-tent_filter")) {
+            i++; assert(i < argc);
+            float r = atof(argv[i]);
+            filter = new TentFilter(r);
+        }
+        else if (!strcmp(argv[i], "-gaussian_filter")) {
+            i++; assert(i < argc);
+            float r = atof(argv[i]);
+            filter = new GaussianFilter(r);
         }
 		else {
 			printf("whoops error with command line argument %d: '%s'\n", i, argv[i]);
 			assert(0);
 		}
 	}
+    if (sampler == nullptr)
+    {
+        sampler = new UniformSampler(1);
+    }
 
 	mainapp = new SceneParser(input_file);
     if (usegrid)
@@ -229,5 +267,6 @@ int main(int argc, char *argv[])
     if(maingrid)
         delete maingrid;
     delete mainapp;
+    delete sampler;
 	return 0;
 }
