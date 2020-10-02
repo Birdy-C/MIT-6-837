@@ -27,3 +27,13 @@
 - middle mouse button - adds a control point on an edge  
 - right mouse button - deletes a control point
 
+
+
+---
+
+## Assignment 9
+
+- Use the mouse to rotate or zoom the scene. 
+- p - pause & unpause the simulation
+- s - perform a single step of integration
+- r -  restart the simulation

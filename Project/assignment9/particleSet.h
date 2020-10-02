@@ -2,6 +2,7 @@
 #define _PARTICLE_SET_
 
 #include <assert.h>
+#include <Windows.h>
 
 #include "particle.h"
 

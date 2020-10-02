@@ -1,12 +1,15 @@
 // Included files for OpenGL Rendering
-#include <GL/gl.h>
+#include <Windows.h>
+#include <GL/GL.h>
+#include <GL/glu.h>
 #include <GL/glut.h>
 
-#include "glCanvas.h"
-#include "parser.h"
-#include "system.h"
 #include "particle.h"
+#include "glCanvas.h"
+#include "system.h"
+#include "parser.h"
 #include "matrix.h"
+
 
 // ========================================================
 

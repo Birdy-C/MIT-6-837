@@ -1,4 +1,5 @@
 // Included files for OpenGL Rendering
+#include <Windows.h>
 #include <GL/gl.h>
 #include <GL/glut.h>
 

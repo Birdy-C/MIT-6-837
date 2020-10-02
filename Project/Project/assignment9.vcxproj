@@ -24,25 +24,25 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\assignment8\arg_parser.h" />
-    <ClInclude Include="..\assignment8\curve.h" />
-    <ClInclude Include="..\assignment8\glCanvas.h" />
-    <ClInclude Include="..\assignment8\spline.h" />
-    <ClInclude Include="..\assignment8\spline_parser.h" />
-    <ClInclude Include="..\assignment8\surface.h" />
-    <ClInclude Include="..\assignment8\triangle_mesh.h" />
+    <ClCompile Include="..\assignment9\glCanvas.cpp" />
+    <ClCompile Include="..\assignment9\main.cpp" />
+    <ClCompile Include="..\assignment9\parser.cpp" />
+    <ClCompile Include="..\assignment9\particle.cpp" />
+    <ClCompile Include="..\assignment9\system.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\assignment8\curve.cpp" />
-    <ClCompile Include="..\assignment8\glCanvas.cpp" />
-    <ClCompile Include="..\assignment8\main.cpp" />
-    <ClCompile Include="..\assignment8\spline.cpp" />
-    <ClCompile Include="..\assignment8\spline_parser.cpp" />
-    <ClCompile Include="..\assignment8\surface.cpp" />
-    <ClCompile Include="..\assignment8\triangle_mesh.cpp" />
+    <ClInclude Include="..\assignment9\forcefield.h" />
+    <ClInclude Include="..\assignment9\generator.h" />
+    <ClInclude Include="..\assignment9\glCanvas.h" />
+    <ClInclude Include="..\assignment9\integrator.h" />
+    <ClInclude Include="..\assignment9\parser.h" />
+    <ClInclude Include="..\assignment9\particle.h" />
+    <ClInclude Include="..\assignment9\particleSet.h" />
+    <ClInclude Include="..\assignment9\random.h" />
+    <ClInclude Include="..\assignment9\system.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{CC856FC2-8F60-4B2D-BC3C-0009C6213438}</ProjectGuid>
+    <ProjectGuid>{1501FBF6-4243-4BB9-AC15-940311122548}</ProjectGuid>
     <RootNamespace>assignment0</RootNamespace>
     <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
   </PropertyGroup>
@@ -101,6 +101,7 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <AdditionalIncludeDirectories>..\common;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <AdditionalDependencies>glut32.lib;%(AdditionalDependencies)</AdditionalDependencies>
