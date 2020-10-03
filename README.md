@@ -39,29 +39,30 @@ If you are interested in this project, **PR welcome**!
 
 ### > If you need some base code..
 
-I plan to put all the home work into one solution. I plan to leave some blank that student can easily "fill in" instead of write the whole structure.
+I plan to leave some blanks that student can easily "fill in" instead of write the whole structure.
 
-Now I only finish the first five project. It's temporary in [**My Result**](My Result) now.
+Now, I finished [**My Result**](My Result). You can search for "TODO0" for what you need to do for assignment 0; "TODO1" for assignment 1.
 
-### Setup
+#### Setup
 
 - 常规-C/C++-附加包含库目录
   - **StaticLib**: "..\staticlib;"
   - **StaticLib_raytracer**: "..\common;..\raytracer\obj;..\raytracer;..\staticlib"
   - **assignment**: "..\common;..\raytracer;..\raytracer\obj;"
 - Then you will get pch file missing error (if expected)
-  - **StaticLib** & **StaticLib_raytracer**: Properties - C/C++ - precompiled header file - Precompiled Header: Select Use (/Yu)
+  - **StaticLib** & **StaticLib_raytracer**: Properties - C/C++ - precompiled header file - Precompiled Header: Select Use (/Yu) 
   - **StaticLib** & **StaticLib_raytracer**: 配置属性 - C/C++ - 预编译头：创建（/Yu）
 - Add lib
   - **assignment**: 配置属性 - VC++ 目录 - 库目录 - "..\lib;"
   - 链接器 - 输入 - 附加依赖项 - glut32.lib
 - 修改项目属性 - 调试 - 工作路径 “$(ProjectDir)..\assignment0”
 - Add glut32.dll to execute folder (start from assignment3)
+- Set desired startup project
 
-### Execute
+#### Execute
 
-- 修改 配置属性-调试-命令参数
-  - looks like “-input scene6_01_sphere.txt -output output6_01c.tga -size 200 200 -grid 10 10 10 -visualize_grid”
+- Edit Configuration Property - Debugging - Command  Argument (配置属性-调试-命令参数)
+  - input looks like “-input scene6_01_sphere.txt -output output6_01c.tga -size 200 200 -grid 10 10 10 -visualize_grid”
 - If a function has assert(0) - this function should be pure virtual, but cause in previous assignment need to instance such abstract class, I leave it this way.
 - Rebuild the project when change startup project (this is a bad design in the code, I generate the mid result in same folder)
 
