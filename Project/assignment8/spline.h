@@ -2,6 +2,8 @@
 #include "arg_parser.h"
 #include "vectors.h"
 #include "triangle_mesh.h"
+
+// TODO9
 class Spline
 {
 public:
@@ -26,6 +28,5 @@ public:
 
     // FOR GENERATING TRIANGLES
     virtual TriangleMesh* OutputTriangles(ArgParser *args) { return NULL; };
-
 };
 
