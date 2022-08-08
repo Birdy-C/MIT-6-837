@@ -41,10 +41,10 @@ void IFS::readFile(char * file)
 		transformation.push_back(m);
 
 		temp += probability;
-		//¸ÅÂÊ¼ÇÂ¼·½Ê½ÊÇ ÔÚÕâ¸öÖ®Ç°µÄËùÓĞµÄ¸ÅÂÊ
+		//æ¦‚ç‡è®°å½•æ–¹å¼æ˜¯ åœ¨è¿™ä¸ªä¹‹å‰çš„æ‰€æœ‰çš„æ¦‚ç‡
 		p.push_back(temp);
 	}
-	p[num_transforms - 1] = 1.01;//·ÀÖ¹¾«¶ÈÎó²î
+	p[num_transforms - 1] = 1.01;//é˜²æ­¢ç²¾åº¦è¯¯å·®
 
 	// close the file
 	fclose(input);
@@ -74,6 +74,7 @@ void IFS::render(Image & img, int pointNum, int iter)
 			point *= m;
 		}
         // clamp
+		// TODO thanks to @PeterHU, clamp is not the right behavior, outside result should be dumped.
 		int tx = min((int)(point.x()*Width), Width - 1);
 		int ty = min((int)(point.y()*Height), Height - 1);
 		tx = max(tx, 0);
